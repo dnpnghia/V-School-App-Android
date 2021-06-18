@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity_2">
+
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+        <TextView
+            android:id="@+id/txtUsernameMenu"
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="80dp"
+            android:text="Username"
+            android:textSize="44sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnThongbao"
+                android:layout_width="100dp"
+                android:layout_height="120dp"
+                android:layout_weight="1"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="30dp"
+                android:text="Thông báo" />
+
+            <Button
+                android:id="@+id/btnQuanly"
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:layout_weight="1"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="15dp"
+                android:text="Quản lý" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnCaidat"
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="30dp"
+                android:layout_weight="1"
+                android:text="Cài đặt" />
+
+            <Button
+                android:id="@+id/btnHotro"
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="1"
+                android:text="Hỗ trợ" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

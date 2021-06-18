@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity_6">
+
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imgAvatar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:srcCompat="@tools:sample/avatars"
+            android:layout_marginTop="90dp"/>
+
+        <TextView
+            android:id="@+id/txtUsername"
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="50dp"
+            android:text="Username"
+            android:textSize="44sp" />
+
+        <TextView
+            android:id="@+id/txtPhone"
+            android:layout_width="349dp"
+            android:layout_height="31dp"
+            android:layout_marginLeft="55dp"
+            android:layout_marginTop="15dp"
+            android:text="Phone"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/txtGmail"
+            android:layout_width="349dp"
+            android:layout_height="31dp"
+            android:layout_marginLeft="55dp"
+            android:text="Gmail"
+            android:layout_marginTop="5dp"
+            android:textSize="22sp"/>
+
+        <TextView
+            android:id="@+id/txtAdd"
+            android:layout_width="349dp"
+            android:layout_height="31dp"
+            android:layout_marginLeft="55dp"
+            android:text="Address"
+            android:layout_marginTop="5dp"
+            android:textSize="22sp"/>
+
+        <Button
+            android:id="@+id/btnEdit"
+            android:layout_width="193dp"
+            android:layout_height="63dp"
+            android:layout_marginLeft="110dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="110dp"
+            android:text="Edit Profile" />
+
+        <Button
+            android:id="@+id/btnChange"
+            android:layout_width="193dp"
+            android:layout_height="63dp"
+            android:layout_marginLeft="110dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="110dp"
+            android:text="Change Password" />
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="300dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
+            android:text="BACK" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

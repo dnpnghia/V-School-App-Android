@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">V-School</string>
+    <string name="quenMk">
+    <a href="#">Quên mật khẩu?</a>
+    </string>
+
+    <string name="lienHe">
+    <a href="#" style="color:blue">Liên hệ</a>
+    </string>
 </resources>
