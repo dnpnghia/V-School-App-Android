@@ -147,8 +147,8 @@ public class MyDatabase extends SQLiteOpenHelper {
         String sql = "select * from " + ACCOUNT_TABLE + " where phone = '" + phone + "' and password = '" + password + "'";
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
-        if (cursor != null) {
-            cursor.moveToFirst();
+        if (cursor.moveToNext()==false) {
+            return null;
         }
         Account account = new Account();
         account.setId(cursor.getString(cursor.getColumnIndex("id")));
