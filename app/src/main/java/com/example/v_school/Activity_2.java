@@ -25,42 +25,55 @@ public class Activity_2 extends AppCompatActivity {
         textViewUsername = (TextView) findViewById(R.id.txtUsernameMenu);
         String username = getIntent().getStringExtra("username");
         textViewUsername.setText("Xin chào " + username);
+        String role = getIntent().getStringExtra("role");
 
-        // CODE NUT' THONG BAO'
-        btnThongbao = (Button) findViewById(R.id.btnThongbao);
-        btnThongbao.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                    Toast.makeText(getApplicationContext(), "login success!",
-//                            Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(Activity_2.this, Activity_7.class);
-////                    intent.putExtra("email", email.getText().toString());
-                startActivity(intent);
-                finish();
-            }
-        });
+        if (role.equals("PARENT")) {
+            // CODE NUT' THONG BAO' CHO PARENT
+            btnThongbao = (Button) findViewById(R.id.btnThongbao);
+            btnThongbao.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(Activity_2.this, Activity_7.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+        } else {
+            // CODE NUT' THONG BAO' CHO SCHOOL
+            Toast.makeText(getApplicationContext(), "Chức năng đang phát triển!",
+                    Toast.LENGTH_SHORT).show();;
+        }
 
-        // CODE NUT' QUAN? LY'
-        btnQuanly = (Button) findViewById(R.id.btnQuanly);
-        btnQuanly.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                    Toast.makeText(getApplicationContext(), "login success!",
-//                            Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(Activity_2.this, Activity_7.class);
-//                    intent.putExtra("email", email.getText().toString());
-                startActivity(intent);
-                finish();
-            }
-        });
+        if (role.equals("PARENT")) {
+            // CODE NUT' QUAN? LY'
+            btnQuanly = (Button) findViewById(R.id.btnQuanly);
+            btnQuanly.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(Activity_2.this, Activity_7.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+        } else {
+            // CODE NUT' QUAN? LY' CHO SCHOOL
+            btnQuanly = (Button) findViewById(R.id.btnQuanly);
+            btnQuanly.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(Activity_2.this, Activity_8.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+        }
+
 
         // CODE NUT' CAI` DAT
         btnCaidat = (Button) findViewById(R.id.btnCaidat);
         btnCaidat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                    Toast.makeText(getApplicationContext(), "login success!",
-//                            Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Activity_2.this, Activity_6.class);
                 intent.putExtra("username", getIntent().getStringExtra("username"));
                 intent.putExtra("phone", getIntent().getStringExtra("phone"));
@@ -75,10 +88,7 @@ public class Activity_2 extends AppCompatActivity {
         btnHotro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                    Toast.makeText(getApplicationContext(), "login success!",
-//                            Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Activity_2.this, Activity_7.class);
-//                    intent.putExtra("email", email.getText().toString());
                 startActivity(intent);
                 finish();
             }
