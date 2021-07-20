@@ -5,6 +5,19 @@
     </string>
 
     <string name="lienHe">
-    <a href="#" style="color:blue">Liên hệ</a>
+    <a style="color:blue" href="#">Liên hệ</a>
     </string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">User name</string>
+    <string name="nav_header_subtitle">Phu huynh</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Dieu khoan</string>
+    <string name="menu_gallery">Thong tin ung dung</string>
+    <string name="menu_slideshow">Dang xuat</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
