@@ -36,8 +36,7 @@
                 android:layout_marginRight="15dp"
                 android:layout_weight="1"
                 android:text="Thông báo"
-                android:textSize="12dp"
-                android:text/>
+                android:textSize="12dp" />
 
             <Button
                 android:id="@+id/btnQuanly"
