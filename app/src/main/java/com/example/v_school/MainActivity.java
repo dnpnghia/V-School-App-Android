@@ -64,8 +64,11 @@ public class MainActivity extends AppCompatActivity {
             if (loginAccount != null) {
                 Toast.makeText(MainActivity.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(MainActivity.this, Activity_2.class);
-                i.putExtra("username", loginAccount.getUsername());
+                i.putExtra("username", loginAccount.getUsername().toString());
+                i.putExtra("phone", loginAccount.getPhone().toString());
+                i.putExtra("password", passwordCheck);
                 startActivity(i);
+                finish();
 
 //            editor = pref.edit();
 //            editor.putString("mydata", loginAccount.getUsername());

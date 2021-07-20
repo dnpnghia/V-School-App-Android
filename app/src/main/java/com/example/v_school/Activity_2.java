@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class Activity_2 extends AppCompatActivity {
@@ -14,11 +15,16 @@ public class Activity_2 extends AppCompatActivity {
     private Button btnQuanly;
     private Button btnCaidat;
     private Button btnHotro;
+    private TextView textViewUsername;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_2);
+
+        textViewUsername = (TextView) findViewById(R.id.txtUsernameMenu);
+        String username = getIntent().getStringExtra("username");
+        textViewUsername.setText("Xin chào " + username);
 
         // CODE NUT' THONG BAO'
         btnThongbao = (Button) findViewById(R.id.btnThongbao);
@@ -28,7 +34,7 @@ public class Activity_2 extends AppCompatActivity {
 //                    Toast.makeText(getApplicationContext(), "login success!",
 //                            Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Activity_2.this, Activity_7.class);
-//                    intent.putExtra("email", email.getText().toString());
+////                    intent.putExtra("email", email.getText().toString());
                 startActivity(intent);
                 finish();
             }
@@ -56,7 +62,9 @@ public class Activity_2 extends AppCompatActivity {
 //                    Toast.makeText(getApplicationContext(), "login success!",
 //                            Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Activity_2.this, Activity_6.class);
-//                    intent.putExtra("email", email.getText().toString());
+                intent.putExtra("username", getIntent().getStringExtra("username"));
+                intent.putExtra("phone", getIntent().getStringExtra("phone"));
+                intent.putExtra("password", getIntent().getStringExtra("password"));
                 startActivity(intent);
                 finish();
             }

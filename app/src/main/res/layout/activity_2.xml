@@ -16,27 +16,27 @@
         <TextView
             android:id="@+id/txtUsernameMenu"
             android:layout_width="match_parent"
-            android:layout_height="63dp"
+            android:layout_height="106dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="80dp"
             android:text="Username"
-            android:textSize="44sp" />
+            android:textSize="30dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="50dp"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btnThongbao"
-                android:layout_width="100dp"
+                android:layout_width="86dp"
                 android:layout_height="120dp"
-                android:layout_weight="1"
-                android:layout_marginRight="15dp"
                 android:layout_marginLeft="30dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1"
                 android:text="Thông báo"
-                android:textSize="18dp"/>
+                android:textSize="12dp" />
 
             <Button
                 android:id="@+id/btnQuanly"
@@ -46,7 +46,7 @@
                 android:layout_marginRight="30dp"
                 android:layout_marginLeft="15dp"
                 android:text="Quản lý"
-                android:textSize="18dp"/>
+                android:textSize="12dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -63,7 +63,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_weight="1"
                 android:text="Cài đặt"
-                android:textSize="18dp"/>
+                android:textSize="12dp"/>
 
             <Button
                 android:id="@+id/btnHotro"
@@ -73,7 +73,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_weight="1"
                 android:text="Hỗ trợ"
-                android:textSize="18dp"/>
+                android:textSize="12dp"/>
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
