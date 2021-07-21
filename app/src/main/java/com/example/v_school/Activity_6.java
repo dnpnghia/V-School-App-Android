@@ -2,10 +2,13 @@ package com.example.v_school;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.v_school.databinding.FragmentHomeBinding;
 
 public class Activity_6 extends AppCompatActivity {
 
@@ -15,12 +18,12 @@ public class Activity_6 extends AppCompatActivity {
     private Button btnEdiprofile;
     private Button btnChangepass;
     private Button btnBack;
+
     MyDatabase myDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_6);
-
         String username = getIntent().getStringExtra("username");
         String phone = getIntent().getStringExtra("phone");
         String pass = getIntent().getStringExtra("password");

@@ -7,15 +7,27 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.v_school.dieukhoan.dieukhoan_Fragment"
+        android:name="com.example.v_school.fragment.home_Fragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/nav_dieukhoan"
+        android:name="com.example.v_school.fragment.dieukhoan_Fragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_dieukhoan" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.v_school.thongtinFragment.thongtin_Fragment"
-        android:label="@string/menu_gallery"
+        android:id="@+id/nav_thongtin"
+        android:name="com.example.v_school.fragment.thongtin_Fragment"
+        android:label="@string/menu_thongtin"
         tools:layout="@layout/fragment_thongtin" />
+
+    <fragment
+        android:id="@+id/nav_quanly"
+        android:name="com.example.v_school.fragment.quanly_Fragment"
+        android:label="nav_quanly"
+        tools:layout="@layout/fragment_quanly"
+        />
 
 
 </navigation>

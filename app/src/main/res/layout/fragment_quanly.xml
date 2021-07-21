@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-   >
+    tools:context=".fragment.home_Fragment"
+    android:background="?android:windowBackground">
 
     <LinearLayout
         android:layout_height="match_parent"
@@ -14,12 +15,20 @@
         tools:layout_editor_absoluteY="1dp">
 
         <TextView
-            android:id="@+id/txtUsernameMenu"
+            android:id="@+id/txtUserName"
             android:layout_width="match_parent"
-            android:layout_height="106dp"
+            android:layout_height="54dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="80dp"
-            android:text="Username"
+            android:text="Ten"
+            android:textSize="30dp" />
+        <TextView
+            android:id="@+id/txtLop"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Lop"
             android:textSize="30dp" />
 
         <LinearLayout
@@ -29,23 +38,23 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btnThongbao"
+                android:id="@+id/btnDiemDanh"
                 android:layout_width="86dp"
                 android:layout_height="120dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="15dp"
                 android:layout_weight="1"
-                android:text="Thông báo"
+                android:text="Điểm danh"
                 android:textSize="12dp" />
 
             <Button
-                android:id="@+id/btnQuanly"
+                android:id="@+id/btnDiem"
                 android:layout_width="wrap_content"
                 android:layout_height="120dp"
                 android:layout_weight="1"
                 android:layout_marginRight="30dp"
                 android:layout_marginLeft="15dp"
-                android:text="Quản lý"
+                android:text="Điểm"
                 android:textSize="12dp"/>
         </LinearLayout>
 
@@ -56,24 +65,24 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btnCaidat"
-                android:layout_width="wrap_content"
+                android:id="@+id/btnThongTin"
+                android:layout_width="79dp"
                 android:layout_height="120dp"
-                android:layout_marginRight="15dp"
                 android:layout_marginLeft="30dp"
+                android:layout_marginRight="15dp"
                 android:layout_weight="1"
-                android:text="Cài đặt"
-                android:textSize="12dp"/>
+                android:text="Thông tin"
+                android:textSize="12dp" />
 
             <Button
-                android:id="@+id/btnHotro"
+                android:id="@+id/btnHocPhi"
                 android:layout_width="wrap_content"
                 android:layout_height="120dp"
-                android:layout_marginRight="30dp"
                 android:layout_marginLeft="15dp"
+                android:layout_marginRight="30dp"
                 android:layout_weight="1"
-                android:text="Hỗ trợ"
-                android:textSize="12dp"/>
+                android:text="Học phí"
+                android:textSize="12dp" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -142,6 +142,7 @@ public class MyDatabase extends SQLiteOpenHelper {
 
     }
 
+
     //Account login
     public Account loginAccount(String phone, String password) {
         String sql = "select * from " + ACCOUNT_TABLE + " where phone = '" + phone + "' and password = '" + password + "'";

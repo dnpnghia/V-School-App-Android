@@ -15,9 +15,10 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Dieu khoan</string>
-    <string name="menu_gallery">Thong tin ung dung</string>
-    <string name="menu_slideshow">Dang xuat</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_dieukhoan">Dieu khoan</string>
+    <string name="menu_thongtin">Thong tin ung dung</string>
+    <string name="menu_dangxuat">Dang xuat</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
