@@ -44,7 +44,7 @@ public class MyDatabase extends SQLiteOpenHelper {
         String a = "INSERT INTO account  VALUES ('nghia01', 'Phú Nghĩa', '123123', '0123456789', '123 Lê Văn Hiến', 'PARENT')";
         String b = "INSERT INTO account  VALUES ('binh01', 'Công Bình', '123123', '0987654321', '70 Nguyễn Hữu Cảnh', 'PARENT')";
         String c = "INSERT INTO account  VALUES ('khanh01', 'Ngọc Khánh', '123123', '0765926169', '51 Thành Vinh 1', 'PARENT')";
-        String d = "INSERT INTO account  VALUES ('bachdang001', 'Trường Tiểu học Bạch Đằng', '123123', '0401288723', '123 Trưng Nữ Vương', 'SCHOOL')";
+        String d = "INSERT INTO account  VALUES ('bachdang001', 'Trường Tiểu học Bạch Đằng', '123123', '0123123123', '123 Trưng Nữ Vương', 'SCHOOL')";
         db.execSQL(a);
         db.execSQL(b);
         db.execSQL(c);
@@ -77,7 +77,12 @@ public class MyDatabase extends SQLiteOpenHelper {
         db.execSQL("drop table if exists " + GRADE_TABLE);
 
     }
-
+//drop database
+    public void dropDB(){
+        String sql = "detach DATABASE" + DATABASE_NAME;
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL(sql);
+    }
     // insert Student
     public void insertStudent(String id, String name, String classes, String idSchool, String idParent) {
         String sql = "insert into " + STUDENT_TABLE + " values ('" + id + "','" + name + "','" + classes + "','" + idSchool + "','" + idParent + "')";
@@ -218,5 +223,22 @@ public class MyDatabase extends SQLiteOpenHelper {
         return listGrade;
     }
 
+// get parent
+public ArrayList<Account> getParents() {
+    ArrayList<Account> listParent = new ArrayList<>();
+    String sql = "select * from " + ACCOUNT_TABLE + " where role = 'PARENT'";
+    SQLiteDatabase db = getReadableDatabase();
+    Cursor cursor = db.rawQuery(sql, null);
+    while (cursor.moveToNext()) {
+        int id = cursor.getColumnIndex("id");
+        int username = cursor.getColumnIndex("username");
+        int phone = cursor.getColumnIndex("phone");
+        int address = cursor.getColumnIndex("address");
+        int role = cursor.getColumnIndex("role");
 
+        listParent.add(new Account(cursor.getString(id), cursor.getString(username), cursor.getString(phone), cursor.getString(address), cursor.getString(role)));
+    }
+    cursor.close();
+    return listParent;
+}
 }
