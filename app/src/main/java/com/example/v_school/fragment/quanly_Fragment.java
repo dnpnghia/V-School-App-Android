@@ -53,7 +53,6 @@ public class quanly_Fragment extends Fragment {
         InitUI();
         userName.setText(student.getName());
         className.setText(student.getClasses());
-
     }
 
 

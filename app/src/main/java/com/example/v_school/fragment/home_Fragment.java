@@ -46,8 +46,14 @@ public class home_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                Fragment fragment = new quanly_Fragment();
+                Fragment fragment;
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                if(account.getRole().equals("PARENT"))
+                    fragment = new quanly_Fragment();
+                else if (account.getRole().equals("SCHOOL"))
+                    fragment = new listphuhuynh_Fragment();
+                else
+                    fragment = null;
                 fragmentTransaction.replace(R.id.nav_host_fragment_content_main,fragment ).addToBackStack("tag");
                 fragmentTransaction.commit();
             }
