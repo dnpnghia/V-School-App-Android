@@ -45,7 +45,7 @@ public class home_Fragment extends Fragment {
         btnQuanly = getView().findViewById(R.id.btnQuanly);
         textViewUsername = getView().findViewById(R.id.txtUsernameMenu);
         mainActivity = (MainActivity)getActivity();
-        account = mainActivity.getAccount();
+//        account = mainActivity.getAccount();
         textViewUsername.setText("Xin chao " + account.getUsername());
         btnQuanly.setOnClickListener(new View.OnClickListener() {
             @Override

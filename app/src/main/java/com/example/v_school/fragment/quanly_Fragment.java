@@ -48,7 +48,7 @@ public class quanly_Fragment extends Fragment {
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mainActivity = (MainActivity)getActivity();
-        account = mainActivity.getAccount();
+//        account = mainActivity.getAccount();
         student = myDatabase.getStudentsByParent(account.getId()).get(0);
         InitUI();
         userName.setText(student.getName());
