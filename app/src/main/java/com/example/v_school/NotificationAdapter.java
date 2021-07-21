@@ -34,8 +34,8 @@ public class NotificationAdapter extends
             // to access the context from any ViewHolder instance.
             super(itemView);
 
-            maSptextview = (TextView) itemView.findViewById(R.id.txtShowThongBao);
-            giaTientextview = (TextView) itemView.findViewById(R.id.txtShowNgayGui);
+//            maSptextview = (TextView) itemView.findViewById(R.id.txtShowThongBao);
+//            giaTientextview = (TextView) itemView.findViewById(R.id.txtShowNgayGui);
 
         }
     }

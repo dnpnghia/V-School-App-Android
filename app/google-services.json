@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "855054045239",
+    "project_id": "v-school-app-android",
+    "storage_bucket": "v-school-app-android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:855054045239:android:d4ce000b1a65666eeeafb2",
+        "android_client_info": {
+          "package_name": "com.example.v_school"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "855054045239-lcc8dbu9tm6jig83bgec7nv7809ggsqp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmE9MjkPF7NGn6vJ7cpdhoDxeTCa0m1tg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "855054045239-lcc8dbu9tm6jig83bgec7nv7809ggsqp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

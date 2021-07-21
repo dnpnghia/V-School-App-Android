@@ -27,6 +27,12 @@ import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
 
     SharedPreferences pref;
     SharedPreferences.Editor editor;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         phone = (EditText) findViewById(R.id.edit_phone);
         password = (EditText) findViewById(R.id.edit_password);
         myDatabase = new MyDatabase(this);
+
     }
 
     public void login(View view) {
@@ -61,6 +70,9 @@ public class MainActivity extends AppCompatActivity {
             String passwordCheck = password.getText().toString();
             Account loginAccount = new Account();
             loginAccount = myDatabase.loginAccount(phoneCheck, passwordCheck);
+
+
+
             if (loginAccount != null) {
                 Toast.makeText(MainActivity.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(MainActivity.this, Activity_2.class);
