@@ -27,9 +27,6 @@ public class Activity_3 extends AppCompatActivity {
 
         binding = Activity3Binding.inflate(getLayoutInflater());
 
-
-
-
     }
 
 

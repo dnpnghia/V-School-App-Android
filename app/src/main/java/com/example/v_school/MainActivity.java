@@ -10,10 +10,12 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 
@@ -71,6 +73,10 @@ public class MainActivity extends AppCompatActivity {
                     NavigationView navigationView = binding.navView;
                     // Passing each menu ID as a set of Ids because each
                     // menu should be considered as top level destinations.
+                navigationView.getMenu().findItem(R.id.nav_dangxuat).setOnMenuItemClickListener(menuItem -> {
+                    logout();
+                    return true;
+                });
 
                     mAppBarConfiguration = new AppBarConfiguration.Builder(
                     R.id.nav_home, R.id.nav_dieukhoan,R.id.nav_thongtin, R.id.nav_dangxuat)
@@ -91,7 +97,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+    public void logout(){
+        SharedPreferences SM = getSharedPreferences("userrecord", 0);
+        SharedPreferences.Editor edit = SM.edit();
+        edit.putBoolean("userlogin", false);
+        edit.commit();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
