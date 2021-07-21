@@ -1,9 +1,8 @@
 package com.example.v_school;
 
 import java.util.ArrayList;
-import com.google.firebase.database.IgnoreExtraProperties;
 
-@IgnoreExtraProperties
+
 public class Notification {
     private int id;
     private String idFrom;
