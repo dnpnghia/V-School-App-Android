@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 i.putExtra("role", loginAccount.getRole().toString());
                 i.putExtra("password", passwordCheck);
                 startActivity(i);
-                finish();
+               
 
 //            editor = pref.edit();
 //            editor.putString("mydata", loginAccount.getUsername());

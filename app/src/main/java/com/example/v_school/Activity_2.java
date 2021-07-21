@@ -39,7 +39,7 @@ public class Activity_2 extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(Activity_2.this, Activity_7.class);
                     startActivity(intent);
-                    finish();
+
                 }
             });
         } else {
@@ -56,7 +56,7 @@ public class Activity_2 extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(Activity_2.this, Activity_7.class);
                     startActivity(intent);
-                    finish();
+
                 }
             });
         } else {
@@ -67,7 +67,7 @@ public class Activity_2 extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(Activity_2.this, Activity_8.class);
                     startActivity(intent);
-                    finish();
+
                 }
             });
         }
@@ -83,7 +83,7 @@ public class Activity_2 extends AppCompatActivity {
                 intent.putExtra("phone", getIntent().getStringExtra("phone"));
                 intent.putExtra("password", getIntent().getStringExtra("password"));
                 startActivity(intent);
-                finish();
+
             }
         });
 
@@ -94,7 +94,7 @@ public class Activity_2 extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Activity_2.this, Activity_7.class);
                 startActivity(intent);
-                finish();
+
             }
         });
 
