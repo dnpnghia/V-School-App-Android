@@ -2,11 +2,6 @@ package com.example.v_school;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-//import androidx.drawerlayout.widget.DrawerLayout;
-//import androidx.navigation.NavController;
-//import androidx.navigation.Navigation;
-//import androidx.navigation.ui.AppBarConfiguration;
-//import androidx.navigation.ui.NavigationUI;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
@@ -21,11 +16,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 
-//import com.example.v_school.databinding.Activity3Binding;
-//import com.google.android.material.navigation.NavigationView;
-//import com.google.android.material.snackbar.Snackbar;
-//import android.view.View;
-//import android.view.Window;
 
 import android.widget.EditText;
 import android.widget.TextView;
@@ -55,13 +45,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        pref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
-//        if (pref.getString("mydata", "") != null) {
-//            Intent i = new Intent(MainActivity.this, Activity_2.class);
-//            i.putExtra("username", pref.getString("mydata", "").toString());
-//            startActivityForResult(i, 10);
-//            finish();
-//        }
         setContentView(R.layout.activity_main);
         phone = (EditText) findViewById(R.id.edit_phone);
         password = (EditText) findViewById(R.id.edit_password);
@@ -75,11 +58,7 @@ public class MainActivity extends AppCompatActivity {
             Account loginAccount = new Account();
             loginAccount = myDatabase.loginAccount(phoneCheck, passwordCheck);
             if (loginAccount != null) {
-                Toast.makeText(MainActivity.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
-//                Intent i = new Intent(MainActivity.this, Activity_2.class);
-//                i.putExtra("username", loginAccount.getUsername().toString());
-//                i.putExtra("phone", loginAccount.getPhone().toString());
-//                i.putExtra("password", passwordCheck);
+                Toast.makeText(MainActivity.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();;
                     // if login success
                     // procces create next view for drawerview
                     username = loginAccount.getUsername().toString().trim();
@@ -101,10 +80,6 @@ public class MainActivity extends AppCompatActivity {
                     NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
                     NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
                     NavigationUI.setupWithNavController(navigationView, navController);
-//                startActivity(i);
-//            editor = pref.edit();
-//            editor.putString("mydata", loginAccount.getUsername());
-//            editor.commit();
             } else {
                 Toast.makeText(MainActivity.this, "Sai số điện thoại hoặc mật khẩu", Toast.LENGTH_SHORT).show();
             }

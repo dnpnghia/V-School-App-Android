@@ -10,6 +10,9 @@ import android.view.Window;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class WelcomeActivity extends AppCompatActivity {
 
     /*Duration of wait*/
@@ -32,6 +35,9 @@ public class WelcomeActivity extends AppCompatActivity {
     private float volume;
     MyDatabase myDatabase;
 
+    FirebaseDatabase rootNode;
+    DatabaseReference reference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +49,10 @@ public class WelcomeActivity extends AppCompatActivity {
             @Override
             public void run() {
                 /* Create an Intent that will start the MainActivity. */
+
+                rootNode = FirebaseDatabase.getInstance();
+                reference = rootNode.getReference("user");
+                reference.setValue("nghia dep trai");
                 Intent mainIntent = new Intent(WelcomeActivity.this, MainActivity.class);
                 startActivity(mainIntent);
                 finish();
