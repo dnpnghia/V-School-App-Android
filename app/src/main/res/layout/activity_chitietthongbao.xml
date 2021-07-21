@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ChiTietThongBao">
+
+    <TextView
+        android:id="@+id/txtTenthongbaochitiet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Thông báo nghỉ học"
+        android:textAlignment="center"
+        android:textSize="40dp" />
+
+    <TextView
+        android:textSize="30dp"
+        android:id="@+id/txtNgaychitiet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textAlignment="center"
+        android:text="Ngày 10/10/2021" />
+    <TextView
+        android:textSize="30dp"
+        android:textAlignment="center"
+        android:id="@+id/txtNoidungchitiet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="nsifwhieuahfuhfwiefhwiehfwifhuwoewoefhwuefhwoefhwefweff" />
+
+
+</LinearLayout>
