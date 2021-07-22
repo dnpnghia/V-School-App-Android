@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.firebase.database.DataSnapshot;
@@ -28,46 +29,38 @@ public class Activity_7 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setTitle("Thông báo");
         setContentView(R.layout.activity_7);
+        rvList = findViewById(R.id.recyclerview);
 
         rootNode = FirebaseDatabase.getInstance();
         myRef = rootNode.getReference("notification");
 
 
-//        noTiList = null;
-//        rvList.setHasFixedSize(true);
-//        noTiAdapter sanPhamAdapter= new noTiAdapter(noTiList);
-//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this);
-//        rvList.setLayoutManager(linearLayoutManager);
-//        rvList.setAdapter(sanPhamAdapter);
-//        btnthem.setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View v) {
-//////                String tensp = edtTenSP.getText().toString();
-//////                String masp = edtMaSP.getText().toString();
-//////                String moTa = edtMoTa.getText().toString();
-//////                String giaTien = edtGiaTien.getText().toString();
-////                SanPham sanpham = new SanPham();
-////                sanpham.setTenSP(tensp);
-////                sanpham.setMaSP(masp);
-////                sanpham.setMoTa(moTa);
-////                sanpham.setGiaTien(giaTien);
-////                myDatabase.insertData(sanpham.getTenSP(),sanpham.getMaSP(),sanpham.getGiaTien(),sanpham.getMoTa());
-////                sanPhamList.add(sanpham);
-////                sanPhamAdapter.notifyDataSetChanged();
-////                Toast.makeText(MainActivity.this,"Added "+sanpham.getMaSP().toString()+" "+sanpham.getGiaTien()+" Successfully",Toast.LENGTH_SHORT).show();
-////            }
-////        });
-//        sanPhamAdapter.setMyOnClickItemListener(new MyOnClickItemListener() {
-//            @Override
-//            public void onClick(SanPham sanpham) {
-//                Intent intent = new Intent(MainActivity.this,ChiTietSanPham.class);
-//                intent.putExtra("tenthongbao",sanpham.getTenSP());
-//                intent.putExtra("ngay",sanpham.getMaSP());
-//                intent.putExtra("noidung",sanpham.getMoTa());
-//
-//                startActivity(intent);
-//            }
-//        });
+        for(int i = 1;i<11;i++)
+        {
+            Notification notification = new Notification();
+            notification.setTopic("Thong bao nghi hoc "+i);
+            notification.setDay("10/10/2021");
+            notification.setIdFrom("nghiadnp");
+            notification.setIdTo("khanhln");
+            notification.setMessage("qwdqdbqwdiqwudhqwdiqduiqwhd");
+            noTiList.add(notification);
+        }
+        rvList.setHasFixedSize(true);
+        NotificationAdapter notificationAdapter= new NotificationAdapter(noTiList);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(Activity_7.this);
+        rvList.setLayoutManager(linearLayoutManager);
+        rvList.setAdapter(notificationAdapter);
+
+        notificationAdapter.setMyOnClickItemListener(new MyOnClickItemListener() {
+            @Override
+            public void onClick(Notification notification) {
+                Intent intent = new Intent(Activity_7.this,ChiTietThongBao.class);
+                intent.putExtra("tenthongbao",notification.getTopic());
+                intent.putExtra("ngay",notification.getDay());
+                intent.putExtra("noidung",notification.getMessage());
+                startActivity(intent);
+            }
+        });
 
 
 

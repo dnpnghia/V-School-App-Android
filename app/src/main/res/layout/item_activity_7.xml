@@ -14,7 +14,7 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="5dp"
+        android:layout_marginLeft="1dp"
         android:layout_toRightOf="@id/imgAvatar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -36,6 +36,17 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"/>
     </LinearLayout>
+    <TextView
+        android:id="@+id/txtNewww"
+        android:text="New!!!"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:textColor="#DF4177"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
     <View
         android:layout_marginTop="5dp"
         android:background="#E6E6E6"

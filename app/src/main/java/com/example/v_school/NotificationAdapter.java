@@ -35,6 +35,11 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     public void onBindViewHolder(@NonNull SanPhamHolder holder, int position) {
         holder.tvTen.setText(sanphamList.get(position).getTopic());
         holder.tvNgay.setText(sanphamList.get(position).getDay());
+//        if (sanphamList.get(position).getIsRead() = 0) {
+//            holder.tvNew.setText("New!!!");
+//        } else {
+//            holder.tvNew.setText("");
+//        }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,10 +56,12 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     {
         public TextView tvTen;
         public TextView tvNgay;
+        public TextView tvNew;
         public SanPhamHolder(@NonNull View itemView) {
             super(itemView);
             tvTen = itemView.findViewById(R.id.txtTenthongbao);
             tvNgay = itemView.findViewById(R.id.txtNgaythongbao);
+            tvNew = itemView.findViewById(R.id.txtNewww);
         }
     }
 }

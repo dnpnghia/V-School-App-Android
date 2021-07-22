@@ -25,6 +25,7 @@
         <activity android:name=".Activity_7" />
         <activity android:name=".Activity_6" />
         <activity android:name=".Activity_3" />
+        <activity android:name=".ChiTietThongBao" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"

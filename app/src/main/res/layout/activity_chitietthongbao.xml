@@ -1,36 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:padding="5dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ChiTietThongBao">
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imgAvatar"
+        android:scaleType="fitXY"
+        android:src="@drawable/ava"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_width="70dp"
+        android:layout_height="75dp"/>
+
+    <LinearLayout
+        android:id="@+id/ln1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/imgAvatar"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtTenthongbaochitiet"
+            android:layout_width="259dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:text="Thông báo nghỉ học"
+            android:textColor="#00AC47"
+            android:textSize="22dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtNgaychitiet"
+            android:layout_width="257dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:text="10/10/2021"
+            android:textColor="#676767"
+            android:textSize="16dp" />
+
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/txtTenthongbaochitiet"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Thông báo nghỉ học"
-        android:textAlignment="center"
-        android:textSize="40dp" />
-
-    <TextView
-        android:textSize="30dp"
-        android:id="@+id/txtNgaychitiet"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:textAlignment="center"
-        android:text="Ngày 10/10/2021" />
-    <TextView
-        android:textSize="30dp"
-        android:textAlignment="center"
         android:id="@+id/txtNoidungchitiet"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="nsifwhieuahfuhfwiefhwiehfwifhuwoewoefhwuefhwoefhwefweff" />
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textSize="20dp"
+        android:layout_marginTop="40dp"
+        android:text="Ahfoqdjiqwdoqwjqoiwdjqojdwqiojqiowdjqiwdjqowidjqowidjqwoidjqowdjqwdoiqjwdiqjwd"
+        android:layout_below="@id/imgAvatar"/>
+
+    <Button
+        android:id="@+id/btnBackChitiet"
+        android:layout_width="76dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtNoidungchitiet"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="270dp"
+        android:text="Back" />
 
 
-</LinearLayout>
+</RelativeLayout>
+
+
+
+
+

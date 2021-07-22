@@ -41,12 +41,10 @@ public class Activity_6 extends AppCompatActivity {
         //CODE NUT' BACK
         btnBack = (Button) findViewById(R.id.btnBack);
         btnBack.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 finish();
-//                System.exit(0);
             }
         });
     }
