@@ -98,16 +98,7 @@ public class Activity_2 extends AppCompatActivity {
             }
         });
 
-        // CODE NUT' HO~ TRO.
-        btnHotro = (Button) findViewById(R.id.btnHotro);
-        btnHotro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Activity_2.this, Activity_7.class);
-                startActivity(intent);
 
-            }
-        });
 
         // Read from the database
         rootNode = FirebaseDatabase.getInstance();

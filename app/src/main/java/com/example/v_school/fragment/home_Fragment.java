@@ -22,7 +22,9 @@ import com.example.v_school.Account;
 import com.example.v_school.Activity_2;
 import com.example.v_school.Activity_4;
 import com.example.v_school.Activity_5;
+import com.example.v_school.Activity_6;
 import com.example.v_school.Activity_7;
+import com.example.v_school.Activity_8;
 import com.example.v_school.MainActivity;
 import com.example.v_school.MyDatabase;
 import com.example.v_school.R;
@@ -53,6 +55,7 @@ public class home_Fragment extends Fragment{
         mainActivity = (MainActivity)getActivity();
         account = mainActivity.getAccount();
         textViewUsername.setText("Xin chao " + account.getUsername());
+        // button quan ly
         btnQuanly.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,12 +68,20 @@ public class home_Fragment extends Fragment{
                     }
                 else if (account.getRole().equals("SCHOOL")){
                     // add activity of quan ly truong hoc
+                    btnQuanly.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(getActivity(), Activity_8.class);
+                            startActivity(intent);
+
+                        }
+                    });
                 }
                 else
                     Toast.makeText(getActivity(), "get action fail", Toast.LENGTH_SHORT).show();
             }
         });
-
+        // button thong bao
         btnThongbao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,11 +91,22 @@ public class home_Fragment extends Fragment{
             }
         });
 
+        // button ho tro
         btnHotro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent in = new Intent(getActivity(), Activity_5.class);
                 startActivity(in);
+            }
+        });
+        //button cai dat
+        btnCaidat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Activity_6.class);
+                intent.putExtra("id", account.getId());
+                startActivity(intent);
+                Toast.makeText(mainActivity, account.getPhone() + account.getId(), Toast.LENGTH_SHORT).show();
             }
         });
 

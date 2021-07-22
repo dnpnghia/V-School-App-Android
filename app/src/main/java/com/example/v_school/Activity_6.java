@@ -20,23 +20,23 @@ public class Activity_6 extends AppCompatActivity {
     private Button btnBack;
     private  String id;
     MyDatabase myDatabase;
+    MainActivity mainActivity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_6);
-        String username = getIntent().getStringExtra("username");
-        String phone = getIntent().getStringExtra("phone");
-        String pass = getIntent().getStringExtra("password");
+        String id = getIntent().getStringExtra("id");
+
+
         myDatabase = new MyDatabase(this);
-        Account loginAccount = new Account();
-        loginAccount = myDatabase.loginAccount(phone, pass);
+         Account loginAccount = myDatabase.getAccById(id);
         String add = loginAccount.getAddress();
-        id = loginAccount.getId();
+
 
         tvUsername = (TextView) findViewById(R.id.txtUsername);
-        tvUsername.setText(username);
+        tvUsername.setText(loginAccount.getUsername());
         tvPhone = (TextView) findViewById(R.id.txtPhone);
-        tvPhone.setText(phone);
+        tvPhone.setText(loginAccount.getPhone());
         tvAdd = (TextView) findViewById(R.id.txtAdd);
         tvAdd.setText(loginAccount.getAddress());
 
@@ -47,8 +47,8 @@ public class Activity_6 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Activity_6.this, Activity_Editprofile.class);
-                intent.putExtra("username", username);
-                intent.putExtra("phone", phone);
+                intent.putExtra("username", loginAccount.getUsername());
+                intent.putExtra("phone", loginAccount.getPhone());
                 intent.putExtra("address", add);
                 intent.putExtra("id", id);
                 startActivity(intent);
