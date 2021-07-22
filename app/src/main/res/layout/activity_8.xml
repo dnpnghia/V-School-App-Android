@@ -7,8 +7,19 @@
     android:orientation="vertical"
     tools:context=".Activity_8">
 
-    <FrameLayout
-        android:id="@+id/your_placeholderActivity8"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycle_parent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></FrameLayout>
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_selectParent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Gửi thông báo" />
 </LinearLayout>
