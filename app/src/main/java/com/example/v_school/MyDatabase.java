@@ -248,7 +248,20 @@ public class MyDatabase extends SQLiteOpenHelper {
 
     // set is Read
     public void setIsRead(int id) {
-        String sql = "update " + NOTIFICATION_TABLE + " set isRead=" + 1 + " where id= " + "'" + id + "'";
+        String sql = "update " + NOTIFICATION_TABLE + " set isRead= " + 1 + " where id= " + "'" + id + "'";
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL(sql);
+    }
+
+    //edit profile
+    public void editProfile(String id, String newName, String newPhone, String newAdd) {
+        String sql = "update " + ACCOUNT_TABLE + " set username= '" + newName +"', phone= '"+newPhone+"', address= '"+newAdd+"' where id= '"+id+"'";
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL(sql);
+    }
+    //change password
+    public void changePass(String id, String newPass) {
+        String sql = "update " + ACCOUNT_TABLE + " set password= '" + newPass + "' where id= '"+id+"'";
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL(sql);
     }
