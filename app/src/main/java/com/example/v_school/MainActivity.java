@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
                 i.putExtra("username", loginAccount.getUsername().toString());
                 i.putExtra("phone", loginAccount.getPhone().toString());
                 i.putExtra("role", loginAccount.getRole().toString());
+                i.putExtra("id", loginAccount.getId().toString());
                 i.putExtra("password", passwordCheck);
                 startActivity(i);
                

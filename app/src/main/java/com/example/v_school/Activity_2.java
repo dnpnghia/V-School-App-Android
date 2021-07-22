@@ -92,6 +92,7 @@ public class Activity_2 extends AppCompatActivity {
                 intent.putExtra("username", getIntent().getStringExtra("username"));
                 intent.putExtra("phone", getIntent().getStringExtra("phone"));
                 intent.putExtra("password", getIntent().getStringExtra("password"));
+                intent.putExtra("id", getIntent().getStringExtra("id"));
                 startActivity(intent);
 
             }
