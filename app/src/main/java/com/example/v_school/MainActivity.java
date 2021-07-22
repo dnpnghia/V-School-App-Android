@@ -27,11 +27,7 @@ import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -66,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void login(View view) {
         try {
-            String phoneCheck = phone.getText().toString();
+            String phoneCheck = phone.getText().toString().trim();
             String passwordCheck = password.getText().toString();
             Account loginAccount = new Account();
             loginAccount = myDatabase.loginAccount(phoneCheck, passwordCheck);

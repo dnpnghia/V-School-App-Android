@@ -1,6 +1,8 @@
 package com.example.v_school;
 
-public class Account {
+import java.io.Serializable;
+
+public class Account implements Serializable {
     private String id;
     private String username;
     private String phone;

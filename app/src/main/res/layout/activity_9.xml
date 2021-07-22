@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="25dp"
+    android:paddingTop="20dp"
+    android:paddingRight="25dp"
+
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Phụ huynh nhận thông báo:"
+        android:textColor="@color/bg_btn_login"
+        android:textSize="17dp"
+
+        ></TextView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycle_parent"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Chủ đề:"
+        android:textColor="@color/bg_btn_login"
+        android:textSize="20dp"
+
+        ></TextView>
+
+    <EditText
+        android:id="@+id/topicNoti"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/custom_input"
+        android:hint="@string/hintChudeThongbao"
+
+        android:inputType="textAutoCorrect"
+        android:padding="10dp"></EditText>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nội dung:"
+        android:textColor="@color/bg_btn_login"
+        android:textSize="20dp"
+
+        ></TextView>
+
+    <EditText
+        android:id="@+id/contentNoti"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_marginTop="10dp"
+        android:autoSizeMaxTextSize="@dimen/cardview_default_radius"
+        android:background="@drawable/custom_input"
+        android:gravity="top"
+        android:hint="@string/hintNoidungThongbao"
+        android:inputType="text|textMultiLine"
+        android:padding="10dp"></EditText>
+
+    <Button
+        android:id="@+id/btn_guithongbao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:backgroundTint="@color/bg_btn_login"
+        android:text="GỬI"></Button>
+</LinearLayout>

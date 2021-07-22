@@ -12,6 +12,8 @@ public class Notification {
     private String topic;
     private String message;
     private String day;
+    private int isRead;
+
 
     public Notification(int id, String idFrom, String idTo, String topic, String message, String day) {
         this.id = id;
@@ -71,5 +73,13 @@ public class Notification {
 
     public void setDay(String day) {
         this.day = day;
+    }
+
+    public int getIsRead() {
+        return isRead;
+    }
+
+    public void setIsRead(int isRead) {
+        this.isRead = isRead;
     }
 }
