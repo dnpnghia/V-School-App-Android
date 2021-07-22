@@ -27,6 +27,7 @@ import com.example.v_school.databinding.Activity3Binding;
 import com.google.android.material.navigation.NavigationView;
 
 
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -55,11 +56,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void login(View view) {
         try {
-            String phoneCheck = phone.getText().toString();
+            String phoneCheck = phone.getText().toString().trim();
             String passwordCheck = password.getText().toString();
             Account loginAccount = new Account();
             loginAccount = myDatabase.loginAccount(phoneCheck, passwordCheck);
             if (loginAccount != null) {
+
                 Toast.makeText(MainActivity.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();;
                 // if login success
                 // procces create next view for drawerview
@@ -86,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
                 NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
                 NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
                 NavigationUI.setupWithNavController(navigationView, navController);
+
+
             } else {
                 Toast.makeText(MainActivity.this, "Sai số điện thoại hoặc mật khẩu", Toast.LENGTH_SHORT).show();
             }

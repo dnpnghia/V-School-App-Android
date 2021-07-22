@@ -10,4 +10,5 @@
     <color name='bg_btn_login'>#0956C6</color>
     <color name='bg_login'>#0080FF</color>
     <color name="hint">#C0C0C0</color>
+    <color name="blueHard">#00007f</color>
 </resources>

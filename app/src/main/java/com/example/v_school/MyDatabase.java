@@ -44,7 +44,7 @@ public class MyDatabase extends SQLiteOpenHelper {
         String a = "INSERT INTO account  VALUES ('nghia01', 'Phú Nghĩa', '123123', '0123456789', '123 Lê Văn Hiến', 'PARENT')";
         String b = "INSERT INTO account  VALUES ('binh01', 'Công Bình', '123123', '0987654321', '70 Nguyễn Hữu Cảnh', 'PARENT')";
         String c = "INSERT INTO account  VALUES ('khanh01', 'Ngọc Khánh', '123123', '0765926169', '51 Thành Vinh 1', 'PARENT')";
-        String d = "INSERT INTO account  VALUES ('bachdang001', 'Trường Tiểu học Bạch Đằng', '123123', '0401288723', '123 Trưng Nữ Vương', 'SCHOOL')";
+        String d = "INSERT INTO account  VALUES ('bachdang001', 'Trường Tiểu học Bạch Đằng', '123123', '0123123123', '123 Trưng Nữ Vương', 'SCHOOL')";
         db.execSQL(a);
         db.execSQL(b);
         db.execSQL(c);
@@ -55,12 +55,12 @@ public class MyDatabase extends SQLiteOpenHelper {
         db.execSQL(e);
         db.execSQL(f);
         db.execSQL(g);
-        String h="INSERT INTO grade VALUES (1, 'kì 1', '2020-2021', 8, 8, 8, 8, 'de1')";
-        String k="INSERT INTO grade  VALUES (2, 'kì 2', '2020-2021', 7, 7, 8, 7.3, 'de1')";
-        String i="INSERT INTO grade  VALUES (3, 'kì 1', '2020-2021', 9, 7, 8, 8, 'de2')";
-        String m="INSERT INTO grade  VALUES (4, 'kì 2', '2020-2021', 6, 5, 10, 7, 'de2')";
-        String l="INSERT INTO grade VALUES (5, 'kì 1', '2020-2021', 9, 9, 9, 9, 'de3')";
-        String n="INSERT INTO grade VALUES (6, 'kì 2', '2020-2021', 8, 8, 7, 7.6, 'de3')";
+        String h = "INSERT INTO grade VALUES (1, 'kì 1', '2020-2021', 8, 8, 8, 8, 'de1')";
+        String k = "INSERT INTO grade  VALUES (2, 'kì 2', '2020-2021', 7, 7, 8, 7.3, 'de1')";
+        String i = "INSERT INTO grade  VALUES (3, 'kì 1', '2020-2021', 9, 7, 8, 8, 'de2')";
+        String m = "INSERT INTO grade  VALUES (4, 'kì 2', '2020-2021', 6, 5, 10, 7, 'de2')";
+        String l = "INSERT INTO grade VALUES (5, 'kì 1', '2020-2021', 9, 9, 9, 9, 'de3')";
+        String n = "INSERT INTO grade VALUES (6, 'kì 2', '2020-2021', 8, 8, 7, 7.6, 'de3')";
         db.execSQL(h);
         db.execSQL(k);
         db.execSQL(i);
@@ -75,7 +75,15 @@ public class MyDatabase extends SQLiteOpenHelper {
         db.execSQL("drop table if exists " + STUDENT_TABLE);
         db.execSQL("drop table if exists " + NOTIFICATION_TABLE);
         db.execSQL("drop table if exists " + GRADE_TABLE);
+        db.execSQL("Alter table " + NOTIFICATION_TABLE + " ADD isRead INTEGER DEFAULT " + 0);
 
+    }
+
+    //drop database
+    public void dropDB() {
+        String sql = "detach DATABASE" + DATABASE_NAME;
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL(sql);
     }
 
     // insert Student
@@ -148,7 +156,24 @@ public class MyDatabase extends SQLiteOpenHelper {
         String sql = "select * from " + ACCOUNT_TABLE + " where phone = '" + phone + "' and password = '" + password + "'";
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
-        if (cursor.moveToNext()==false) {
+        if (cursor.moveToNext() == false) {
+            return null;
+        }
+        Account account = new Account();
+        account.setId(cursor.getString(cursor.getColumnIndex("id")));
+        account.setUsername(cursor.getString(cursor.getColumnIndex("username")));
+        account.setPhone(cursor.getString(cursor.getColumnIndex("phone")));
+        account.setAddress(cursor.getString(cursor.getColumnIndex("address")));
+        account.setRole(cursor.getString(cursor.getColumnIndex("role")));
+        return account;
+
+    }
+    //Account login
+    public Account getAccById(String id) {
+        String sql = "select * from " + ACCOUNT_TABLE + " where id = '" + id  + "'";
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery(sql, null);
+        if (cursor.moveToNext() == false) {
             return null;
         }
         Account account = new Account();
@@ -219,5 +244,42 @@ public class MyDatabase extends SQLiteOpenHelper {
         return listGrade;
     }
 
+    // get parent
+    public ArrayList<Account> getParents() {
+        ArrayList<Account> listParent = new ArrayList<>();
+        String sql = "select * from " + ACCOUNT_TABLE + " where role = 'PARENT'";
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery(sql, null);
+        while (cursor.moveToNext()) {
+            int id = cursor.getColumnIndex("id");
+            int username = cursor.getColumnIndex("username");
+            int phone = cursor.getColumnIndex("phone");
+            int address = cursor.getColumnIndex("address");
+            int role = cursor.getColumnIndex("role");
 
+            listParent.add(new Account(cursor.getString(id), cursor.getString(username), cursor.getString(phone), cursor.getString(address), cursor.getString(role)));
+        }
+        cursor.close();
+        return listParent;
+    }
+
+    // set is Read
+    public void setIsRead(int id) {
+        String sql = "update " + NOTIFICATION_TABLE + " set isRead= " + 1 + " where id= " + "'" + id + "'";
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL(sql);
+    }
+
+    //edit profile
+    public void editProfile(String id, String newName, String newPhone, String newAdd) {
+        String sql = "update " + ACCOUNT_TABLE + " set username= '" + newName +"', phone= '"+newPhone+"', address= '"+newAdd+"' where id= '"+id+"'";
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL(sql);
+    }
+    //change password
+    public void changePass(String id, String newPass) {
+        String sql = "update " + ACCOUNT_TABLE + " set password= '" + newPass + "' where id= '"+id+"'";
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL(sql);
+    }
 }

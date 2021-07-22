@@ -15,41 +15,41 @@
             android:id="@+id/imgAvatar"
             android:layout_width="match_parent"
             android:layout_height="145dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="40dp"
             android:src="@drawable/ava" />
 
-        <TextView
-            android:id="@+id/txtUsername"
+
+        <EditText
+            android:id="@+id/editCapnhatten"
             android:layout_width="match_parent"
-            android:layout_height="74dp"
-            android:textStyle="bold"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="30dp"
-            android:text="Username"
-            android:textSize="40sp" />
-
-        <TextView
-            android:id="@+id/txtPhone"
-            android:layout_width="349dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="55dp"
-            android:layout_marginTop="15dp"
-            android:text="Phone"
-            android:textSize="30sp" />
+            android:layout_marginTop="40dp"
+            android:ems="10"
+            android:inputType="textPersonName"
 
+            android:textSize="25dp"/>
 
-        <TextView
-            android:id="@+id/txtAdd"
-            android:layout_width="349dp"
+        <EditText
+            android:id="@+id/editCapnhatsodienthoai"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="55dp"
-            android:layout_marginTop="5dp"
-            android:text="Address"
-            android:textSize="30sp" />
+            android:ems="10"
+            android:inputType="textPersonName"
+
+            android:textSize="25dp" />
+
+        <EditText
+            android:id="@+id/editCapnhatdiachi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+
+            android:textSize="25dp"/>
 
         <Button
-            android:id="@+id/btnEdit"
-            android:layout_width="212dp"
+            android:id="@+id/btnEditCapnhatthongtin"
+            android:layout_width="211dp"
             android:layout_height="63dp"
             android:layout_marginLeft="100dp"
             android:layout_marginTop="50dp"
@@ -57,21 +57,13 @@
             android:text="Cập nhật thông tin" />
 
         <Button
-            android:id="@+id/btnChange"
-            android:layout_width="212dp"
-            android:layout_height="63dp"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="110dp"
-            android:text="Đổi mật khẩu" />
-
-        <Button
-            android:id="@+id/btnBack"
+            android:id="@+id/btnBackCapnhatthongtin"
             android:layout_width="96dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="300dp"
             android:text="BACK" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
