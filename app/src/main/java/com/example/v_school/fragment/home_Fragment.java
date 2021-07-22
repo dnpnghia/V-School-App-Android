@@ -1,5 +1,7 @@
 package com.example.v_school.fragment;
 
+import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,23 +9,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.v_school.Account;
 import com.example.v_school.Activity_2;
+import com.example.v_school.Activity_4;
+import com.example.v_school.Activity_5;
 import com.example.v_school.Activity_7;
 import com.example.v_school.MainActivity;
+import com.example.v_school.MyDatabase;
 import com.example.v_school.R;
 import com.example.v_school.databinding.Activity3Binding;
 
 import org.jetbrains.annotations.NotNull;
 
-public class home_Fragment extends Fragment {
+public class home_Fragment extends Fragment{
 
     private Button btnThongbao;
     private Button btnQuanly;
@@ -42,30 +49,54 @@ public class home_Fragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
-        btnQuanly = getView().findViewById(R.id.btnQuanly);
-        textViewUsername = getView().findViewById(R.id.txtUsernameMenu);
+        InitUI();
         mainActivity = (MainActivity)getActivity();
-//        account = mainActivity.getAccount();
+        account = mainActivity.getAccount();
         textViewUsername.setText("Xin chao " + account.getUsername());
         btnQuanly.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                Fragment fragment;
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                Intent in;
                 if(account.getRole().equals("PARENT"))
-                    fragment = new quanly_Fragment();
-                else if (account.getRole().equals("SCHOOL"))
-                    fragment = new listphuhuynh_Fragment();
+                    {
+                        in = new Intent(getActivity(), Activity_4.class);
+                        in.putExtra("accountID",account.getId());
+                        startActivity(in);
+                    }
+                else if (account.getRole().equals("SCHOOL")){
+                    // add activity of quan ly truong hoc
+                }
                 else
-                    fragment = null;
-                fragmentTransaction.replace(R.id.nav_host_fragment_content_main,fragment ).addToBackStack("tag");
-                fragmentTransaction.commit();
+                    Toast.makeText(getActivity(), "get action fail", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnThongbao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(getActivity(), Activity_7.class);
+                startActivity(in);
+
+            }
+        });
+
+        btnHotro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(getActivity(), Activity_5.class);
+                startActivity(in);
             }
         });
 
     }
 
+    public void InitUI(){
+        btnQuanly = getView().findViewById(R.id.btnQuanly);
+        btnThongbao  = getView().findViewById(R.id.btnThongbao);
+        btnHotro = getView().findViewById(R.id.btnHotro);
+        btnCaidat = getView().findViewById(R.id.btnCaidat);
+        textViewUsername = getView().findViewById(R.id.txtUsernameMenu);
+    }
     @Override
     public void onDestroyView() {
         super.onDestroyView();

@@ -19,14 +19,10 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class Activity_3 extends AppCompatActivity {
 
-    private Activity3Binding binding;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        binding = Activity3Binding.inflate(getLayoutInflater());
-
+        setContentView(R.layout.activity_3);
     }
 
 

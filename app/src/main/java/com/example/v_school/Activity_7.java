@@ -11,5 +11,7 @@ public class Activity_7 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setTitle("Thông báo");
         setContentView(R.layout.activity_7);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
 }
