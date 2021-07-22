@@ -10,7 +10,7 @@
 
     <EditText
         android:id="@+id/edtSearch"
-        android:layout_width="match_parent"
+        android:layout_width="338dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
@@ -18,7 +18,18 @@
         android:background="@drawable/custom_input"
         android:drawableLeft="@drawable/ic_search_grey"
         android:hint="Nhập tên thông báo cần tìm"
-        android:padding="10dp" />
+        android:imeOptions="actionDone"
+        android:padding="10dp"
+        android:singleLine="true" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@id/edtSearch"
+        app:srcCompat="@android:drawable/ic_menu_search" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
