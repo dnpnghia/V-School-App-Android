@@ -99,9 +99,9 @@ public class Activity_9 extends AppCompatActivity {
                             for (Notification nt : listNotiNewest) {
                                 rootNode = FirebaseDatabase.getInstance();
                                 reference = rootNode.getReference("notification");
-                                Notification notification = new Notification(nt.getId(), nt.getIdFrom(), nt.getIdTo(), nt.getTopic(), nt.getMessage(), nt.getDay(), nt.getIsRead());
-//                            reference.child(String.valueOf(nt.getId())).setValue(nt);
-                                activity_7.pushDataFB(notification);
+//                                Notification notification = new Notification(nt.getId(), nt.getIdFrom(), nt.getIdTo(), nt.getTopic(), nt.getMessage(), nt.getDay(), nt.getIsRead());
+                                reference.child(String.valueOf(nt.getId())).setValue(nt);
+//                                activity_7.pushDataFB(notification);
 
                             }
                             Toast.makeText(Activity_9.this, "Thêm thông báo thành công!", Toast.LENGTH_SHORT).show();
