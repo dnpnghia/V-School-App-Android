@@ -36,7 +36,7 @@ public class Activity_7 extends AppCompatActivity {
     private MyDatabase myDatabase = new MyDatabase(this);
     private FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
     private DatabaseReference myRef = rootNode.getReference("notification");
-    String userId = myRef.getKey();
+    String userId = myRef.push().getKey();
     NotificationAdapter notificationAdapter = new NotificationAdapter(noTiList);
 
     @Override
