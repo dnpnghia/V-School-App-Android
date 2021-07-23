@@ -12,7 +12,8 @@
         android:layout_width="match_parent"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+        tools:layout_editor_absoluteY="1dp"
+        android:layout_marginTop="25dp">
 
 
         <LinearLayout
@@ -25,87 +26,152 @@
             android:orientation="vertical">
 
 
+            <ImageView
+                android:id="@+id/imgAvatar"
+                android:layout_width="70dp"
+                android:layout_height="75dp"
+                android:layout_marginTop="20dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/grade"
+                android:layout_gravity="center"/>
 
             <TextView
                 android:id="@+id/txtChildName"
                 android:layout_width="259dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="70dp"
                 android:layout_marginTop="15dp"
                 android:text="Ten: "
-                android:textColor="#00AC47"
+                android:textColor="#009688"
                 android:textSize="22dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:gravity="center"/>
 
-            <TextView
-                android:id="@+id/txtLop"
-                android:layout_width="257dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="5dp"
-                android:text="ID: "
-                android:textColor="#00AC47"
-                android:textSize="22dp"
-                android:textStyle="bold" />
+
 
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/btnDiemDanh"
-                android:layout_width="361dp"
-                android:layout_height="106dp"
+                android:layout_width="64dp"
+                android:layout_height="50dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="15dp"
                 android:layout_weight="1"
-                android:text="Toan"
-                android:textColor="#00AC47"
-                android:textSize="22dp" />
+                android:text="Toan :"
+                android:textColor="#151515"
+                android:textSize="22dp"
+                android:textStyle="bold" />
+            <EditText
+                android:id="@+id/edtToan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:paddingLeft="50dp"
+                android:text="9" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/btnDiem"
-                android:layout_width="362dp"
-                android:layout_height="81dp"
+                android:id="@+id/txtVan"
+                android:layout_width="64dp"
+                android:layout_height="50dp"
                 android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
+                android:layout_marginRight="15dp"
                 android:layout_weight="1"
-                android:text="Van"
-                android:textColor="#00AC47"
-                android:textSize="22dp" />
+                android:text="Van :"
+                android:textColor="#151515"
+                android:textSize="22dp"
+                android:textStyle="bold" />
+            <EditText
+                android:id="@+id/edtVan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:paddingLeft="50dp"
+                android:text="9" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtAnh"
+                android:layout_width="64dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1"
+                android:text="Anh :"
+                android:textColor="#151515"
+                android:textSize="22dp"
+                android:textStyle="bold" />
+            <EditText
+                android:id="@+id/edtAnh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:paddingLeft="50dp"
+                android:text="9"/>
+
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="163dp"
             android:layout_marginTop="30dp"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:gravity="center">
 
             <TextView
-                android:id="@+id/btnThongTin"
-                android:layout_width="362dp"
-                android:layout_height="52dp"
+                android:id="@+id/txtTong"
+                android:layout_width="64dp"
+                android:layout_height="50dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="15dp"
                 android:layout_weight="1"
-                android:text="Anh"
-                android:textColor="#00AC47"
-                android:textSize="22dp" />
+                android:text="TB :"
+                android:textColor="#009688"
+                android:textSize="22dp"
+                android:textStyle="bold"/>
 
-            <TextView
-                android:id="@+id/btnHocPhi"
-                android:layout_width="379dp"
-                android:layout_height="20dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
+            <EditText
+                android:id="@+id/edtTong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:text="Trung binh"
-                android:textColor="#00AC47"
-                android:textSize="22dp" />
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:paddingLeft="50dp"
+                android:text="9" />
+
+
         </LinearLayout>
+
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

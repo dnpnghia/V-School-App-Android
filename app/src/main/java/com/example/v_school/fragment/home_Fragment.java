@@ -45,8 +45,6 @@ public class home_Fragment extends Fragment{
     @Override
     public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        rootNode = FirebaseDatabase.getInstance();
-        myRef = rootNode.getReference("notification");
 
     }
 
@@ -150,6 +148,19 @@ public class home_Fragment extends Fragment{
     }
 
 
+    public MainActivity getMainActivity() {
+        return mainActivity;
+    }
 
+    public void setMainActivity(MainActivity mainActivity) {
+        this.mainActivity = mainActivity;
+    }
 
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
 }

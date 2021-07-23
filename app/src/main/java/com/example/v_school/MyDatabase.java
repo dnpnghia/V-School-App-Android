@@ -58,7 +58,9 @@ public class MyDatabase extends SQLiteOpenHelper {
         String ggg = "INSERT INTO student VALUES ('de5', 'Phúc Thọ', '4a', 'bachdang001', 'phuc01')";
         db.execSQL(e);
         db.execSQL(f);
+
         db.execSQL(g);db.execSQL(gg);db.execSQL(ggg);
+
         String h = "INSERT INTO grade VALUES (1, 'kì 1', '2020-2021','de1', 8, 8, 8, 8 )";
         String k = "INSERT INTO grade  VALUES (2, 'kì 2', '2020-2021','de1', 7, 7, 8, 7.3)";
         String i = "INSERT INTO grade  VALUES (3, 'kì 1', '2020-2021','de2', 9, 7, 8, 8 )";
@@ -272,7 +274,7 @@ public class MyDatabase extends SQLiteOpenHelper {
             int toan = cursor.getColumnIndex("toan");
             int van = cursor.getColumnIndex("van");
             int anh = cursor.getColumnIndex("anh");
-            listGrade.add(new Grade(cursor.getInt(id), cursor.getString(idStudent), cursor.getString(semeter), cursor.getString(year), cursor.getFloat(toan), cursor.getFloat(van), cursor.getFloat(anh)));
+            listGrade.add(new Grade(cursor.getInt(id), cursor.getString(semeter), cursor.getString(year), cursor.getString(idStudent), cursor.getFloat(toan), cursor.getFloat(van), cursor.getFloat(anh)));
         }
         cursor.close();
         return listGrade;

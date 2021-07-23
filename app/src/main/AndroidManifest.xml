@@ -12,9 +12,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VSchool">
+        <activity android:name=".Activity_grade" android:parentActivityName=".Activity_4"/>
 
-        <activity android:name=".Activity_5" android:parentActivityName=".Activity_3" />
+        <activity android:name=".Activity_5" android:parentActivityName=".Activity_3" >
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".Activity_4" android:parentActivityName=".Activity_3" />
+
+
         <activity android:name=".Activity_Editprofile"></activity>
         <activity android:name=".Activity_8" android:parentActivityName=".Activity_3">
             <intent-filter>
