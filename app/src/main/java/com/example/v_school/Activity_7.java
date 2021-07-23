@@ -13,9 +13,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseError;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,13 +32,14 @@ import java.util.List;
 public class Activity_7 extends AppCompatActivity {
     private RecyclerView rvList;
     private List<Notification> noTiList = new ArrayList<>();
+    private List<String> newList = new ArrayList<>();
     private NotificationAdapter noTiAdapter;
     private EditText inputSearch;
     private ImageButton btnSearch;
     private MyDatabase myDatabase = new MyDatabase(this);
-    private FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
-    private DatabaseReference myRef = rootNode.getReference("notification");
-    String userId = myRef.push().getKey();
+    public static FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
+    public static DatabaseReference myRef = rootNode.getReference().child("notification");
+    public static String userId = myRef.push().getKey();
     NotificationAdapter notificationAdapter = new NotificationAdapter(noTiList);
 
     @Override
@@ -69,73 +72,117 @@ public class Activity_7 extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(Activity_7.this);
         rvList.setLayoutManager(linearLayoutManager);
         rvList.setAdapter(notificationAdapter);
-
-
-
-
-        myRef.child(userId).addValueEventListener(new ValueEventListener() {
+        // My top posts by number of stars
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
-                Notification notification = new Notification();
-                notification = dataSnapshot.getValue(Notification.class);
-                Toast.makeText(getApplicationContext(), "Có thông báo mới!!!",
-                        Toast.LENGTH_SHORT).show();
-                if (dataSnapshot.getValue(Notification.class) != null) {
-                    noTiList.add(notification);
-                    notificationAdapter.notifyDataSetChanged();
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                    Notification noti = snapshot.getValue(Notification.class);
+                    noTiList.add(noti);
                 }
+                notificationAdapter.notifyDataSetChanged();
             }
 
             @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
+            public void onCancelled(DatabaseError databaseError) {
             }
         });
-// creating user object
-        Notification user = new Notification(15, "bachdang01", "nghia01", "nghi hoc", "dshdasdjiaos", "10/10/2021", 0);
 
-// pushing user to 'users' node using the userId
-        myRef.child(userId).setValue(user);
+//        ChildEventListener childEventListener = new ChildEventListener() {
+//            @Override
+//            public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
+//                // A new data item has been added, add it to the list
+//
+//                Toast.makeText(getApplicationContext(), "Có thông báo mới!!!",
+//                        Toast.LENGTH_SHORT).show();
+//                Notification notification = new Notification();
+//                notification = dataSnapshot.getValue(Notification.class);
+//                Toast.makeText(getApplicationContext(), "Có thông báo mới!!!",
+//                        Toast.LENGTH_SHORT).show();
+//                if (dataSnapshot.getValue(Notification.class) != null) {
+//                    noTiList.add(notification);
+//                    notificationAdapter.notifyDataSetChanged();
+//                }
+//            }
+//
+//
+//            @Override
+//            public void onChildChanged(DataSnapshot dataSnapshot, String previousChildName) {
+//
+//            }
+//
+//            @Override
+//            public void onChildRemoved(DataSnapshot dataSnapshot) {
+//
+//            }
+//
+//            @Override
+//            public void onChildMoved(DataSnapshot dataSnapshot, String previousChildName) {
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        };
+//
+//        myRef.addChildEventListener(childEventListener);
+
+
+
 
 
 
         notificationAdapter.setMyOnClickItemListener(new MyOnClickItemListener() {
-            @Override
-            public void onClick(Notification notification) {
-                Intent intent = new Intent(Activity_7.this, ChiTietThongBao.class);
-                intent.putExtra("tenthongbao", notification.getTopic());
-                intent.putExtra("ngay", notification.getDay());
-                intent.putExtra("noidung", notification.getMessage());
-                startActivity(intent);
-            }
-        });
-        btnSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String strCHR = inputSearch.getText().toString();
-                if (inputSearch.getText().toString().length() > 0) {
-                    ArrayList<Notification> listNew = new ArrayList<>();
-                    for (int l = 0; l < noTiList.size(); l++) {
-                        String topic = noTiList.get(l).getTopic().toLowerCase();
-                        if (topic.contains(strCHR.toLowerCase())) {
-                            listNew.add(noTiList.get(l));
-                        }
-                    }
+        @Override
+        public void onClick (Notification notification){
+            Intent intent = new Intent(Activity_7.this, ChiTietThongBao.class);
+            intent.putExtra("tenthongbao", notification.getTopic());
+            intent.putExtra("ngay", notification.getDay());
+            intent.putExtra("noidung", notification.getMessage());
+            notification.setIsRead(1);
+//                myDatabase.setIsRead(notification.getId());
+            startActivity(intent);
+        }
+    });
 
-                    NotificationAdapter notificationAdapter = new NotificationAdapter(listNew);
-                    rvList.setAdapter(notificationAdapter);
-                } else {
+        btnSearch.setOnClickListener(new View.OnClickListener()
 
-                    NotificationAdapter notificationAdapter = new NotificationAdapter(noTiList);
-                    rvList.setAdapter(notificationAdapter);
+    {
+        @Override
+        public void onClick (View v){
+        String strCHR = inputSearch.getText().toString();
+        if (inputSearch.getText().toString().length() > 0) {
+            ArrayList<Notification> listNew = new ArrayList<>();
+            for (int l = 0; l < noTiList.size(); l++) {
+                String topic = noTiList.get(l).getTopic().toLowerCase();
+                if (topic.contains(strCHR.toLowerCase())) {
+                    listNew.add(noTiList.get(l));
                 }
             }
-        });
 
+            NotificationAdapter notificationAdapter = new NotificationAdapter(listNew);
+            rvList.setAdapter(notificationAdapter);
+        } else {
+
+            NotificationAdapter notificationAdapter = new NotificationAdapter(noTiList);
+            rvList.setAdapter(notificationAdapter);
+        }
     }
-    public void pushDataFB(Notification noti){
+    });
+
+}
+
+    void pushDataFB(Notification noti) {
         myRef.child(userId).setValue(noti);
+        notificationAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        notificationAdapter.notifyDataSetChanged();
+
     }
 
 }
