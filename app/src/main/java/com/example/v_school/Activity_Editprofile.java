@@ -56,13 +56,13 @@ public class Activity_Editprofile extends AppCompatActivity {
         });
 
         //CODE NUT' BACK
-        btnBack = (Button) findViewById(R.id.btnBackCapnhatthongtin);
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                finish();
-            }
-        });
+//        btnBack = (Button) findViewById(R.id.btnBackCapnhatthongtin);
+//        btnBack.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // TODO Auto-generated method stub
+//                finish();
+//            }
+//        });
     }
 }

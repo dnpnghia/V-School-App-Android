@@ -64,14 +64,14 @@
             android:text="Cập nhật thông tin"
             android:backgroundTint="@color/bg_btn_login"/>
 
-        <Button
-            android:id="@+id/btnBackCapnhatthongtin"
-            android:layout_width="96dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="300dp"
-            android:text="BACK" />
+<!--        <Button-->
+<!--            android:id="@+id/btnBackCapnhatthongtin"-->
+<!--            android:layout_width="96dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="25dp"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:layout_marginRight="300dp"-->
+<!--            android:text="BACK" />-->
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

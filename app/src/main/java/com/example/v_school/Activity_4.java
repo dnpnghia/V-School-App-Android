@@ -22,13 +22,14 @@ public class Activity_4 extends AppCompatActivity {
     protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_4);
+        setTitle("Quản lý con");
         InitUI();
         String accountId = getIntent().getStringExtra("accountID");
         Toast.makeText(getApplicationContext(), accountId, Toast.LENGTH_SHORT).show();
         myDatabase = new MyDatabase(this);
         student = myDatabase.getStudentsByParent(accountId).get(0);
-        userName.setText(student.getName().toString());
-        className.setText("Lop: "+student.getClasses().toString());
+        userName.setText("Tên học sinh: "+student.getName().toString());
+        className.setText("Lớp: "+student.getClasses().toString());
         btnDiem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -36,7 +36,7 @@ public class dieukhoan_Fragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         title = (TextView) getView().findViewById(R.id.text_dieukhoan);
-        title.setText("dieu khoan");
+        title.setText("Điều khoản");
     }
 
     @Override

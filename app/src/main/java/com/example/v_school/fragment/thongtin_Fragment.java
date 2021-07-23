@@ -37,6 +37,6 @@ public class thongtin_Fragment extends Fragment {
     @Override
     public void onViewCreated( View view,  Bundle savedInstanceState) {
         title = (TextView) getView().findViewById(R.id.text_thongtin);
-        title.setText("thong tin Fragment");
+        title.setText("Thông tin ứng dụng");
     }
 }
