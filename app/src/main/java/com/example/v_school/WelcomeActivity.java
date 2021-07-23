@@ -17,22 +17,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
     /*Duration of wait*/
     private final int SPLASH_DISPLAY_LENGTH = 3000;
-    private SoundPool soundPool;
 
-    private AudioManager audioManager;
-
-
-    // Maximumn sound stream.
-    private static final int MAX_STREAMS = 5;
-
-    // Stream type.
-    private static final int streamType = AudioManager.STREAM_MUSIC;
-
-    private boolean loaded;
-
-    private int soundIdDestroy;
-    private int soundIdGun;
-    private float volume;
     MyDatabase myDatabase;
 
     FirebaseDatabase rootNode;
@@ -44,7 +29,7 @@ public class WelcomeActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE); //will hide the title
         getSupportActionBar().hide(); // hide the title bar
         setContentView(R.layout.activity_welcome);
-
+        myDatabase = new MyDatabase(this);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

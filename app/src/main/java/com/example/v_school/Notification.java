@@ -14,6 +14,32 @@ public class Notification {
     private String day;
     private int isRead;
 
+    public Notification(int id, String idFrom, String idTo, String topic, String message, String day, int isRead) {
+        this.id = id;
+        this.idFrom = idFrom;
+        this.idTo = idTo;
+        this.topic = topic;
+        this.message = message;
+        this.day = day;
+        this.isRead = isRead;
+    }
+
+    public Notification(String idFrom, String idTo, String topic, String message, String day) {
+        this.idFrom = idFrom;
+        this.idTo = idTo;
+        this.topic = topic;
+        this.message = message;
+        this.day = day;
+    }
+
+    public Notification(String idFrom, String idTo, String topic, String message, String day, int isRead) {
+        this.idFrom = idFrom;
+        this.idTo = idTo;
+        this.topic = topic;
+        this.message = message;
+        this.day = day;
+        this.isRead = isRead;
+    }
 
     public Notification(int id, String idFrom, String idTo, String topic, String message, String day) {
         this.id = id;

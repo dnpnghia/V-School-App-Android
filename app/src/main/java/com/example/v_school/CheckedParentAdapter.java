@@ -18,7 +18,6 @@ import java.util.List;
 public class CheckedParentAdapter extends RecyclerView.Adapter<CheckedParentAdapter.ViewHolder> {
     List<Account> parentList;
     Context c;
-    ArrayList<Account> checkedParents = new ArrayList<>();
 
     public CheckedParentAdapter(List<Account> parentList) {
         this.parentList = parentList;

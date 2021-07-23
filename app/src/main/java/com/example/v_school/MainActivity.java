@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        pref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        pref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
 //        if (pref.getString("mydata", "") != null) {
 //            Intent i = new Intent(MainActivity.this, Activity_2.class);
 //            i.putExtra("username", pref.getString("mydata", "").toString());
@@ -79,9 +79,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
                
 
-//            editor = pref.edit();
-//            editor.putString("mydata", loginAccount.getUsername());
-//            editor.commit();
+            editor = pref.edit();
+            editor.putString("currentPhone", loginAccount.getPhone());
+            editor.commit();
             } else {
                 Toast.makeText(MainActivity.this, "Sai số điện thoại hoặc mật khẩu", Toast.LENGTH_SHORT).show();
             }

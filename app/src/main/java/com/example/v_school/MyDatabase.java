@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class MyDatabase extends SQLiteOpenHelper {
 
-    private final static String DATABASE_NAME = "mydb";
+    private final static String DATABASE_NAME = "mydbV";
     private final static String STUDENT_TABLE = "student";
     private final static String ACCOUNT_TABLE = "account";
     private final static String NOTIFICATION_TABLE = "notification";
@@ -32,7 +32,7 @@ public class MyDatabase extends SQLiteOpenHelper {
         String createStudent = "create table " + STUDENT_TABLE + " (id TEXT PRIMARY KEY, name TEXT, classes TEXT,idSchool TEXT, idParent TEXT," +
                 "FOREIGN KEY(idSchool) REFERENCES account(id)," +
                 "FOREIGN KEY(idParent) REFERENCES account(id))";
-        String createNoti = "create table " + NOTIFICATION_TABLE + " (id INTEGER PRIMARY KEY AUTOINCREMENT,idFrom TEXT, idTo TEXT, topic TEXT, message TEXT, day TEXT," +
+        String createNoti = "create table " + NOTIFICATION_TABLE + " (id INTEGER PRIMARY KEY AUTOINCREMENT,idFrom TEXT, idTo TEXT, topic TEXT, message TEXT, day TEXT,isRead INTEGER DEFAULT 0," +
                 "FOREIGN KEY(idFrom) REFERENCES account(id)," +
                 "FOREIGN KEY(idTo) REFERENCES account(id))";
         String createGrade = "create table " + GRADE_TABLE + " (id INTEGER PRIMARY KEY AUTOINCREMENT,idStudent TEXT, year TEXT, sememter TEXT, toan REAL, van REAl, anh REAL, tb REAL," +
@@ -75,8 +75,6 @@ public class MyDatabase extends SQLiteOpenHelper {
         db.execSQL("drop table if exists " + STUDENT_TABLE);
         db.execSQL("drop table if exists " + NOTIFICATION_TABLE);
         db.execSQL("drop table if exists " + GRADE_TABLE);
-        db.execSQL("Alter table " + NOTIFICATION_TABLE + " ADD isRead INTEGER DEFAULT " + 0);
-
     }
 
     //drop database
@@ -102,7 +100,7 @@ public class MyDatabase extends SQLiteOpenHelper {
 
     //insert Notification
     public void insertNoti(String idFrom, String idTo, String topic, String message, String day) {
-        String sql = "insert into " + NOTIFICATION_TABLE + " values ('" + idFrom + "','" + idTo + "','" + topic + "','" + message + "','" + day + "')";
+        String sql = "insert into " + NOTIFICATION_TABLE + "(idFrom,idTo,topic,message,day) values ('" + idFrom + "','" + idTo + "','" + topic + "','" + message + "','" + day + "')";
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL(sql);
     }
@@ -179,10 +177,11 @@ public class MyDatabase extends SQLiteOpenHelper {
             int id = cursor.getColumnIndex("id");
             int idFrom = cursor.getColumnIndex("idFrom");
             int idTo = cursor.getColumnIndex("idTo");
-            int topic = cursor.getColumnIndex("topin");
+            int topic = cursor.getColumnIndex("topic");
             int message = cursor.getColumnIndex("message");
             int day = cursor.getColumnIndex("day");
-            listNoti.add(new Notification(cursor.getInt(id), cursor.getString(idFrom), cursor.getString(idTo), cursor.getString(topic), cursor.getString(message), cursor.getString(day)));
+            int isRead = cursor.getColumnIndex("isRead");
+            listNoti.add(new Notification(cursor.getInt(id), cursor.getString(idFrom), cursor.getString(idTo), cursor.getString(topic), cursor.getString(message), cursor.getString(day), cursor.getInt(isRead)));
         }
         cursor.close();
         return listNoti;
@@ -200,7 +199,7 @@ public class MyDatabase extends SQLiteOpenHelper {
         notification.setId(cursor.getInt(cursor.getColumnIndex("id")));
         notification.setIdFrom(cursor.getString(cursor.getColumnIndex("idFrom")));
         notification.setIdTo(cursor.getString(cursor.getColumnIndex("idTo")));
-        notification.setTopic(cursor.getString(cursor.getColumnIndex("topin")));
+        notification.setTopic(cursor.getString(cursor.getColumnIndex("topic")));
         notification.setMessage(cursor.getString(cursor.getColumnIndex("message")));
         notification.setDay(cursor.getString(cursor.getColumnIndex("day")));
         return notification;
@@ -255,14 +254,53 @@ public class MyDatabase extends SQLiteOpenHelper {
 
     //edit profile
     public void editProfile(String id, String newName, String newPhone, String newAdd) {
-        String sql = "update " + ACCOUNT_TABLE + " set username= '" + newName +"', phone= '"+newPhone+"', address= '"+newAdd+"' where id= '"+id+"'";
+        String sql = "update " + ACCOUNT_TABLE + " set username= '" + newName + "', phone= '" + newPhone + "', address= '" + newAdd + "' where id= '" + id + "'";
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL(sql);
     }
+
     //change password
     public void changePass(String id, String newPass) {
-        String sql = "update " + ACCOUNT_TABLE + " set password= '" + newPass + "' where id= '"+id+"'";
+        String sql = "update " + ACCOUNT_TABLE + " set password= '" + newPass + "' where id= '" + id + "'";
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL(sql);
+    }
+
+    // get noti newest
+    public ArrayList<Notification> getNotiNewest(int top) {
+        ArrayList<Notification> listNoti=new ArrayList<>();
+        String sql = "select * from " + NOTIFICATION_TABLE + " order by id DESC LIMIT " + top;
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery(sql, null);
+        while (cursor.moveToNext()) {
+            int id = cursor.getColumnIndex("id");
+            int idFrom = cursor.getColumnIndex("idFrom");
+            int idTo = cursor.getColumnIndex("idTo");
+            int topic = cursor.getColumnIndex("topic");
+            int message = cursor.getColumnIndex("message");
+            int day = cursor.getColumnIndex("day");
+            int isRead = cursor.getColumnIndex("isRead");
+            listNoti.add(new Notification(cursor.getInt(id), cursor.getString(idFrom), cursor.getString(idTo), cursor.getString(topic), cursor.getString(message), cursor.getString(day), cursor.getInt(isRead)));
+        }
+        cursor.close();
+        return listNoti;
+    }
+
+    // get account by phone
+    public Account getAccountByPhone(String phone) {
+        String sql = "select * from " + ACCOUNT_TABLE + " where phone = '" + phone + "'";
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery(sql, null);
+        if (cursor.moveToNext() == false) {
+            return null;
+        }
+        Account account = new Account();
+        account.setId(cursor.getString(cursor.getColumnIndex("id")));
+        account.setUsername(cursor.getString(cursor.getColumnIndex("username")));
+        account.setPhone(cursor.getString(cursor.getColumnIndex("phone")));
+        account.setAddress(cursor.getString(cursor.getColumnIndex("address")));
+        account.setRole(cursor.getString(cursor.getColumnIndex("role")));
+        return account;
+
     }
 }

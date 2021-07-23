@@ -36,7 +36,7 @@
         ></TextView>
 
     <EditText
-        android:id="@+id/topicNoti"
+        android:id="@+id/txt_topicNoti"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -57,7 +57,7 @@
         ></TextView>
 
     <EditText
-        android:id="@+id/contentNoti"
+        android:id="@+id/txt_contentNoti"
         android:layout_width="match_parent"
         android:layout_height="170dp"
         android:layout_marginTop="10dp"
