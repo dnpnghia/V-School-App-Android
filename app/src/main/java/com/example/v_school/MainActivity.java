@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         myDatabase = new MyDatabase(this);
         pref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         Account currentAccount = myDatabase.getAccountByPhone(pref.getString("currentPhone", "").toString());
+
         setContentView(R.layout.activity_main);
         phone = (EditText) findViewById(R.id.edit_phone);
         password = (EditText) findViewById(R.id.edit_password);

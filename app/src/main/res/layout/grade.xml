@@ -15,7 +15,7 @@
         <LinearLayout
             android:id="@+id/ln1"
             android:layout_width="match_parent"
-            android:layout_height="182dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
             android:layout_toRightOf="@id/imgAvatar"
@@ -33,15 +33,15 @@
 
             <TextView
                 android:id="@+id/txtChildName"
-                android:layout_width="259dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="70dp"
-                android:layout_marginTop="15dp"
+            android:layout_marginTop="15dp"
                 android:text="Tên: "
                 android:textColor="@color/bg_btn_login"
                 android:textSize="22dp"
                 android:textStyle="bold"
-                android:gravity="center"/>
+                android:layout_gravity="center"
+                />
 
 
 
@@ -61,7 +61,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="15dp"
                 android:layout_weight="1"
-                android:text="Toan :"
+                android:text="Toán :"
                 android:textColor="#151515"
                 android:textSize="22dp"
                 android:textStyle="bold" />
@@ -90,7 +90,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="15dp"
                 android:layout_weight="1"
-                android:text="Van :"
+                android:text="Văn :"
                 android:textColor="#151515"
                 android:textSize="22dp"
                 android:textStyle="bold" />

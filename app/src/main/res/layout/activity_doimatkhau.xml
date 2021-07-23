@@ -49,11 +49,11 @@
 
     <Button
         android:id="@+id/btnDoiMK"
-        android:layout_width="211dp"
-        android:layout_height="63dp"
-        android:layout_marginLeft="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp"
-        android:layout_marginRight="110dp"
+
         android:text="Cập nhật"
         android:backgroundTint="@color/bg_btn_login"/>
 

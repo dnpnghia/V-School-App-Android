@@ -65,7 +65,6 @@
         android:layout_below="@id/txtNoidungchitiet"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="50dp"
-        android:layout_marginRight="270dp"
         android:backgroundTint="@color/bg_btn_login"
         android:text="Back" />
 

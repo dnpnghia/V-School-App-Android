@@ -38,9 +38,9 @@ public class Activity_6 extends AppCompatActivity {
         tvUsername = (TextView) findViewById(R.id.txtUsername);
         tvUsername.setText(loginAccount.getUsername());
         tvPhone = (TextView) findViewById(R.id.txtPhone);
-        tvPhone.setText(loginAccount.getPhone());
+        tvPhone.setText("SĐT: "+loginAccount.getPhone());
         tvAdd = (TextView) findViewById(R.id.txtAdd);
-        tvAdd.setText(loginAccount.getAddress());
+        tvAdd.setText("Địa chỉ: "+loginAccount.getAddress());
 
 
         // CODE NUT' EDIT PROFILE

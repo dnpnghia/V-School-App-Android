@@ -25,6 +25,7 @@ public class Activity_Doimatkhau extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Đổi mật khẩu");
         setContentView(R.layout.activity_doimatkhau);
         edtMkcu = (EditText) findViewById(R.id.txt_mkCu);
         edtMkmoi = (EditText) findViewById(R.id.txt_mMoi);

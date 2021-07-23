@@ -21,34 +21,34 @@
 
 
         <EditText
-            android:drawableStart="@drawable/ic_baseline_create_24"
             android:id="@+id/editCapnhatten"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="20dp"
+            android:drawableStart="@drawable/ic_baseline_create_24"
             android:ems="10"
             android:hint="Tên mới"
             android:inputType="textPersonName"
             android:textSize="25dp" />
 
         <EditText
-            android:drawableStart="@drawable/ic_baseline_create_24"
             android:id="@+id/editCapnhatsodienthoai"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
+            android:drawableStart="@drawable/ic_baseline_create_24"
             android:ems="10"
             android:hint="Số điện thoại mới"
             android:inputType="textPersonName"
             android:textSize="25dp" />
 
         <EditText
-            android:drawableStart="@drawable/ic_baseline_create_24"
             android:id="@+id/editCapnhatdiachi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
+            android:drawableStart="@drawable/ic_baseline_create_24"
             android:ems="10"
             android:hint="Địa chỉ mới"
             android:inputType="textPersonName"
@@ -56,22 +56,22 @@
 
         <Button
             android:id="@+id/btnEditCapnhatthongtin"
-            android:layout_width="211dp"
-            android:layout_height="63dp"
-            android:layout_marginLeft="100dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="50dp"
-            android:layout_marginRight="110dp"
-            android:text="Cập nhật thông tin"
-            android:backgroundTint="@color/bg_btn_login"/>
 
-<!--        <Button-->
-<!--            android:id="@+id/btnBackCapnhatthongtin"-->
-<!--            android:layout_width="96dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginLeft="25dp"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:layout_marginRight="300dp"-->
-<!--            android:text="BACK" />-->
+            android:backgroundTint="@color/bg_btn_login"
+            android:text="Cập nhật thông tin" />
+
+        <!--        <Button-->
+        <!--            android:id="@+id/btnBackCapnhatthongtin"-->
+        <!--            android:layout_width="96dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginLeft="25dp"-->
+        <!--            android:layout_marginTop="20dp"-->
+        <!--            android:layout_marginRight="300dp"-->
+        <!--            android:text="BACK" />-->
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

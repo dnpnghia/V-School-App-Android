@@ -24,6 +24,7 @@ public class Activity_Editprofile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Cập nhật thông tin");
         setContentView(R.layout.activity_editprofile);
         edtUsername = (EditText) findViewById(R.id.editCapnhatten);
         edtUsername.setHint(getIntent().getStringExtra("username"));

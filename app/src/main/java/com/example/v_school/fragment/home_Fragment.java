@@ -66,7 +66,7 @@ public class home_Fragment extends Fragment {
         InitUI();
         mainActivity = (MainActivity) getActivity();
         account = mainActivity.getAccount();
-        textViewUsername.setText("Xin chao " + account.getUsername());
+        textViewUsername.setText("Xin chào, " + account.getUsername());
         // button quan ly
         btnQuanly.setOnClickListener(new View.OnClickListener() {
             @Override

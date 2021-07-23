@@ -37,24 +37,26 @@
 
                 android:backgroundTint="@color/bg_btn_login"
                 android:id="@+id/btnThongbao"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="15dp"
                 android:layout_weight="1"
                 android:text="Thông báo"
+                android:paddingLeft="11dp"
+                android:paddingRight="11dp"
                 android:textSize="15dp" />
 
             <Button
                 android:backgroundTint="@color/bg_btn_login"
                 android:id="@+id/btnQuanly"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginRight="30dp"
                 android:layout_marginLeft="15dp"
                 android:text="Quản lý"
-                android:textSize="20dp"/>
+                android:textSize="15dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -70,25 +72,24 @@
             <Button
                 android:backgroundTint="@color/bg_btn_login"
                 android:id="@+id/btnCaidat"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="30dp"
                 android:layout_weight="1"
                 android:text="Cài đặt"
-                android:textSize="20dp"
-                android:gravity="bottom|center_horizontal|fill_vertical"
+                android:textSize="15dp"
                 />
 
             <Button
                 android:backgroundTint="@color/bg_btn_login"
                 android:id="@+id/btnHotro"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="30dp"
                 android:layout_marginLeft="15dp"
                 android:layout_weight="1"
                 android:text="Hỗ trợ"
-                android:textSize="20dp"/>
+                android:textSize="15dp"/>
         </LinearLayout>
     </LinearLayout>
