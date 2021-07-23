@@ -1,5 +1,6 @@
 package com.example.v_school;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,12 +13,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
+import com.google.firebase.FirebaseError;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,24 +31,22 @@ public class Activity_7 extends AppCompatActivity {
     private RecyclerView rvList;
     private List<Notification> noTiList = new ArrayList<>();
     private NotificationAdapter noTiAdapter;
-    DatabaseReference myRef;
-    FirebaseDatabase rootNode;
-    EditText inputSearch;
-    ImageButton btnSearch;
-
+    private EditText inputSearch;
+    private ImageButton btnSearch;
+    private MyDatabase myDatabase = new MyDatabase(this);
+    private FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
+    private DatabaseReference myRef = rootNode.getReference("notification");
+    String userId = myRef.getKey();
+    NotificationAdapter notificationAdapter = new NotificationAdapter(noTiList);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle("Thông báo");
         setContentView(R.layout.activity_7);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         rvList = findViewById(R.id.recyclerview);
-
-        rootNode = FirebaseDatabase.getInstance();
-        myRef = rootNode.getReference("notification");
 
 
         for (int i = 1; i < 11; i++) {
@@ -62,10 +65,40 @@ public class Activity_7 extends AppCompatActivity {
         inputSearch = (EditText) findViewById(R.id.edtSearch);
         btnSearch = (ImageButton) findViewById(R.id.imageButton);
 
-        NotificationAdapter notificationAdapter = new NotificationAdapter(noTiList);
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(Activity_7.this);
         rvList.setLayoutManager(linearLayoutManager);
         rvList.setAdapter(notificationAdapter);
+
+
+
+
+        myRef.child(userId).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                Notification notification = new Notification();
+                notification = dataSnapshot.getValue(Notification.class);
+                Toast.makeText(getApplicationContext(), "Có thông báo mới!!!",
+                        Toast.LENGTH_SHORT).show();
+                if (dataSnapshot.getValue(Notification.class) != null) {
+                    noTiList.add(notification);
+                    notificationAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+            }
+        });
+// creating user object
+        Notification user = new Notification(15, "bachdang01", "nghia01", "nghi hoc", "dshdasdjiaos", "10/10/2021", 0);
+
+// pushing user to 'users' node using the userId
+        myRef.child(userId).setValue(user);
+
+
 
         notificationAdapter.setMyOnClickItemListener(new MyOnClickItemListener() {
             @Override
@@ -100,6 +133,9 @@ public class Activity_7 extends AppCompatActivity {
             }
         });
 
+    }
+    public void pushDataFB(Notification noti){
+        myRef.child(userId).setValue(noti);
     }
 
 }
