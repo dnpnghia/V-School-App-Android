@@ -1,6 +1,7 @@
 package com.example.v_school;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -72,65 +73,37 @@ public class Activity_7 extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(Activity_7.this);
         rvList.setLayoutManager(linearLayoutManager);
         rvList.setAdapter(notificationAdapter);
-        // My top posts by number of stars
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
-                    Notification noti = snapshot.getValue(Notification.class);
-                    noTiList.add(noti);
-                }
-                notificationAdapter.notifyDataSetChanged();
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
+        myRef.addChildEventListener(new ChildEventListener() {
+                                        @Override
+                                        public void onChildAdded(@NotNull DataSnapshot snapshot, @Nullable String s) {
+                                            Notification notification = new Notification();
+                                            notification = snapshot.getValue(Notification.class);
+                                            noTiList.add(notification);
+                                            notificationAdapter.notifyDataSetChanged();
+                                        }
 
-//        ChildEventListener childEventListener = new ChildEventListener() {
-//            @Override
-//            public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
-//                // A new data item has been added, add it to the list
-//
-//                Toast.makeText(getApplicationContext(), "Có thông báo mới!!!",
-//                        Toast.LENGTH_SHORT).show();
-//                Notification notification = new Notification();
-//                notification = dataSnapshot.getValue(Notification.class);
-//                Toast.makeText(getApplicationContext(), "Có thông báo mới!!!",
-//                        Toast.LENGTH_SHORT).show();
-//                if (dataSnapshot.getValue(Notification.class) != null) {
-//                    noTiList.add(notification);
-//                    notificationAdapter.notifyDataSetChanged();
-//                }
-//            }
-//
-//
-//            @Override
-//            public void onChildChanged(DataSnapshot dataSnapshot, String previousChildName) {
-//
-//            }
-//
-//            @Override
-//            public void onChildRemoved(DataSnapshot dataSnapshot) {
-//
-//            }
-//
-//            @Override
-//            public void onChildMoved(DataSnapshot dataSnapshot, String previousChildName) {
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        };
-//
-//        myRef.addChildEventListener(childEventListener);
+                                        @Override
+                                        public void onChildChanged(@NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) {
 
+                                        }
 
+                                        @Override
+                                        public void onChildRemoved(@NotNull DataSnapshot snapshot) {
 
+                                        }
 
+                                        @Override
+                                        public void onChildMoved(@NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+                                        }
+            });
+        
 
 
         notificationAdapter.setMyOnClickItemListener(new MyOnClickItemListener() {
