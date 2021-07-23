@@ -37,7 +37,7 @@ public class Activity_9 extends AppCompatActivity {
     NetworkChangeReceiver netReceiver = new NetworkChangeReceiver();
     IntentFilter intentFilter = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
     Account currentAccount = new Account();
-    Activity_7 activity_7 = new Activity_7();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +104,9 @@ public class Activity_9 extends AppCompatActivity {
 //                                activity_7.pushDataFB(notification);
 
                             }
+                            checkedParents.clear();
+                            Intent i = new Intent(Activity_9.this, Activity_8.class);
+                            startActivity(i);
                             Toast.makeText(Activity_9.this, "Thêm thông báo thành công!", Toast.LENGTH_SHORT).show();
                         }
 

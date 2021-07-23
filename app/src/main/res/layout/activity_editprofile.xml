@@ -7,9 +7,10 @@
     tools:context=".Activity_6">
 
     <LinearLayout
-        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <ImageView
             android:id="@+id/imgAvatar"
@@ -20,32 +21,38 @@
 
 
         <EditText
+            android:drawableStart="@drawable/ic_baseline_create_24"
             android:id="@+id/editCapnhatten"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
+            android:layout_marginBottom="20dp"
             android:ems="10"
+            android:hint="Tên mới"
             android:inputType="textPersonName"
-
-            android:textSize="25dp"/>
-
-        <EditText
-            android:id="@+id/editCapnhatsodienthoai"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-
             android:textSize="25dp" />
 
         <EditText
+            android:drawableStart="@drawable/ic_baseline_create_24"
+            android:id="@+id/editCapnhatsodienthoai"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:ems="10"
+            android:hint="Số điện thoại mới"
+            android:inputType="textPersonName"
+            android:textSize="25dp" />
+
+        <EditText
+            android:drawableStart="@drawable/ic_baseline_create_24"
             android:id="@+id/editCapnhatdiachi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
             android:ems="10"
+            android:hint="Địa chỉ mới"
             android:inputType="textPersonName"
-
-            android:textSize="25dp"/>
+            android:textSize="25dp" />
 
         <Button
             android:id="@+id/btnEditCapnhatthongtin"
@@ -54,7 +61,8 @@
             android:layout_marginLeft="100dp"
             android:layout_marginTop="50dp"
             android:layout_marginRight="110dp"
-            android:text="Cập nhật thông tin" />
+            android:text="Cập nhật thông tin"
+            android:backgroundTint="@color/bg_btn_login"/>
 
         <Button
             android:id="@+id/btnBackCapnhatthongtin"
