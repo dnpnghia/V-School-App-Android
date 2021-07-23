@@ -84,14 +84,18 @@ public class Activity_7 extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(Activity_7.this);
         rvList.setLayoutManager(linearLayoutManager);
         rvList.setAdapter(notificationAdapter);
-        ArrayList<Notification> listNew = new ArrayList<>();
-        for (int l = 0; l < noTiList.size(); l++) {
-            if (noTiList.get(l).getIsRead() == 0) {
-                listNew.add(noTiList.get(l));
-            }
-        }
-        NotificationAdapter notificationAdapter = new NotificationAdapter(listNew);
-        rvList.setAdapter(notificationAdapter);
+
+//        Notification n;
+//        Notification z;
+//        for (int l = 0; l < noTiList.size()-1; l++)
+//        for (int j =l+1; j < noTiList.size(); j++){
+//            if (noTiList.get(l).getIsRead() > noTiList.get(j).getIsRead()) {
+//                n = noTiList.get(l);
+//                z = noTiList.get(j);
+//                noTiList.get(l) = z;
+//            }
+//        }
+
         myRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NotNull DataSnapshot snapshot, @Nullable String s) {
@@ -179,15 +183,15 @@ public class Activity_7 extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
-            ArrayList<Notification> listNew = new ArrayList<>();
-            for (int l = 0; l < noTiList.size(); l++) {
-                if (noTiList.get(l).getIsRead() == 0) {
-                    listNew.add(noTiList.get(l));
-                }
-            }
-            NotificationAdapter notificationAdapter = new NotificationAdapter(listNew);
-            rvList.setAdapter(notificationAdapter);
+//
+//            ArrayList<Notification> listNew = new ArrayList<>();
+//            for (int l = 0; l < noTiList.size(); l++) {
+//                if (noTiList.get(l).getIsRead() == 0) {
+//                    listNew.add(noTiList.get(l));
+//                }
+//            }
+//            NotificationAdapter notificationAdapter = new NotificationAdapter(listNew);
+//            rvList.setAdapter(notificationAdapter);
 
 
         notificationAdapter.notifyDataSetChanged();
