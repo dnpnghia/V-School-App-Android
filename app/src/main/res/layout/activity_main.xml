@@ -45,7 +45,6 @@
         android:backgroundTint="@color/white"
         android:drawableStart="@drawable/ic_baseline_lock_24"
         android:hint="Mật khẩu"
-
         android:inputType="textPassword"
         android:padding="10dp"
         android:textColorHint="@color/hint" />

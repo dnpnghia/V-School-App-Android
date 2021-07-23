@@ -44,17 +44,21 @@ public class MyDatabase extends SQLiteOpenHelper {
         String a = "INSERT INTO account  VALUES ('nghia01', 'Phú Nghĩa', '123123', '0123456789', '123 Lê Văn Hiến', 'PARENT')";
         String b = "INSERT INTO account  VALUES ('binh01', 'Công Bình', '123123', '0987654321', '70 Nguyễn Hữu Cảnh', 'PARENT')";
         String c = "INSERT INTO account  VALUES ('khanh01', 'Ngọc Khánh', '123123', '0765926169', '51 Thành Vinh 1', 'PARENT')";
+        String aa = "INSERT INTO account  VALUES ('lam01', 'Thanh Lâm', '123123', '0888888888', '31 Quang Trung', 'PARENT')";
+        String bb = "INSERT INTO account  VALUES ('phuc01', 'Ngọc Phúc', '123123', '011111111', '10 Ngô Quyền', 'PARENT')";
         String d = "INSERT INTO account  VALUES ('bachdang001', 'Trường Tiểu học Bạch Đằng', '123123', '0123123123', '123 Trưng Nữ Vương', 'SCHOOL')";
         db.execSQL(a);
         db.execSQL(b);
         db.execSQL(c);
-        db.execSQL(d);
+        db.execSQL(d);db.execSQL(aa);db.execSQL(bb);
         String e = "INSERT INTO student VALUES ('de1', 'Đinh Hoa', '2a', 'bachdang001', 'nghia01')";
         String f = "INSERT INTO student VALUES ('de2', 'Công Hoàng', '1a', 'bachdang001', 'binh01')";
         String g = "INSERT INTO student VALUES ('de3', 'Ngọc Bội', '3c', 'bachdang001', 'khanh01')";
+        String gg = "INSERT INTO student VALUES ('de4', 'Thanh Trúc', '5c', 'bachdang001', 'lam01')";
+        String ggg = "INSERT INTO student VALUES ('de5', 'Phúc Thọ', '4a', 'bachdang001', 'phuc01')";
         db.execSQL(e);
         db.execSQL(f);
-        db.execSQL(g);
+        db.execSQL(g);db.execSQL(gg);db.execSQL(ggg);
         String h = "INSERT INTO grade VALUES (1, 'kì 1', '2020-2021', 8, 8, 8, 8, 'de1')";
         String k = "INSERT INTO grade  VALUES (2, 'kì 2', '2020-2021', 7, 7, 8, 7.3, 'de1')";
         String i = "INSERT INTO grade  VALUES (3, 'kì 1', '2020-2021', 9, 7, 8, 8, 'de2')";
@@ -67,6 +71,19 @@ public class MyDatabase extends SQLiteOpenHelper {
         db.execSQL(m);
         db.execSQL(l);
         db.execSQL(n);
+        String a1 = "INSERT INTO notification(idFrom,idTo,topic,message,day) values('bachdang001','khanh01','Học phí','Học phí tháng 5: 100.000đ','22/05/2021')";
+        String a2 = "INSERT INTO notification(idFrom,idTo,topic,message,day) values('bachdang001','khanh01','Học phí','Học phí tháng 6: 100.000đ','22/06/2021')";
+        String a3 = "INSERT INTO notification(idFrom,idTo,topic,message,day) values('bachdang001','khanh01','Điểm số','-Toán: 8đ, Văn: 9đ, Anh: 9đ','22/07/2021')";
+        String a4 = "INSERT INTO notification(idFrom,idTo,topic,message,day) values('bachdang001','binh01','Nghỉ học','Ngày mai hs được nghỉ học','22/08/2021')";
+        String a5 = "INSERT INTO notification(idFrom,idTo,topic,message,day) values('bachdang001','nghia01','Học phí','Học phí tháng 5: 100.000đ','22/05/2021')";
+        String a6 = "INSERT INTO notification(idFrom,idTo,topic,message,day) values('bachdang001','nghia01','Học phí','Học phí tháng 6: 100.000đ','22/06/2021')";
+        String a7 = "INSERT INTO notification(idFrom,idTo,topic,message,day) values('bachdang001','nghia01','Điểm','Toán: 8đ,Văn: 9đ, Anh: 5đ','22/07/2021')";
+        String a8 = "INSERT INTO notification(idFrom,idTo,topic,message,day) values('bachdang001','nghia01','Lịch học','T2 T3 T4','22/07/2021')";
+        String a9 = "INSERT INTO notification(idFrom,idTo,topic,message,day) values('bachdang001','nghia01','Thu phí wc','100.000đ','22/07/2021')";
+        String a10 = "INSERT INTO notification(idFrom,idTo,topic,message,day) values('bachdang001','binh01','Học phí','Học phí tháng 5: 100.000đ','22/07/2021')";
+        db.execSQL(a1);db.execSQL(a2);db.execSQL(a3);db.execSQL(a4);db.execSQL(a6);db.execSQL(a7);db.execSQL(a8);db.execSQL(a9);db.execSQL(a10);
+
+
     }
 
     @Override
@@ -317,6 +334,7 @@ public class MyDatabase extends SQLiteOpenHelper {
         account.setPhone(cursor.getString(cursor.getColumnIndex("phone")));
         account.setAddress(cursor.getString(cursor.getColumnIndex("address")));
         account.setRole(cursor.getString(cursor.getColumnIndex("role")));
+        account.setPassword(cursor.getString(cursor.getColumnIndex("password")));
         return account;
 
     }
