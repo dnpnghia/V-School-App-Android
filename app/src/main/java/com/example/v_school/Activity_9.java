@@ -33,6 +33,7 @@ public class Activity_9 extends AppCompatActivity {
     MyDatabase myDatabase;
     SharedPreferences pref;
     Account currentAccount = new Account();
+    Activity_7 activity_7 = new Activity_7();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +93,9 @@ public class Activity_9 extends AppCompatActivity {
                             rootNode = FirebaseDatabase.getInstance();
                             reference = rootNode.getReference("notification");
                             Notification notification = new Notification(nt.getId(), nt.getIdFrom(), nt.getIdTo(), nt.getTopic(), nt.getMessage(), nt.getDay(), nt.getIsRead());
-                            reference.child(String.valueOf(nt.getId())).setValue(nt);
+//                            reference.child(String.valueOf(nt.getId())).setValue(nt);
+                            activity_7.pushDataFB(notification);
+
                         }
                         Toast.makeText(Activity_9.this, "Thêm thông báo thành công!", Toast.LENGTH_SHORT).show();
                     }
