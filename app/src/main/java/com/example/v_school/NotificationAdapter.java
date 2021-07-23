@@ -48,6 +48,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                sanphamList.get(position).setIsRead(1);
                 myOnClickItemListener.onClick(sanphamList.get(position));
             }
         });
