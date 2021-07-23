@@ -59,12 +59,12 @@ public class MyDatabase extends SQLiteOpenHelper {
         db.execSQL(e);
         db.execSQL(f);
         db.execSQL(g);db.execSQL(gg);db.execSQL(ggg);
-        String h = "INSERT INTO grade VALUES (1, 'kì 1', '2020-2021', 8, 8, 8, 8, 'de1')";
-        String k = "INSERT INTO grade  VALUES (2, 'kì 2', '2020-2021', 7, 7, 8, 7.3, 'de1')";
-        String i = "INSERT INTO grade  VALUES (3, 'kì 1', '2020-2021', 9, 7, 8, 8, 'de2')";
-        String m = "INSERT INTO grade  VALUES (4, 'kì 2', '2020-2021', 6, 5, 10, 7, 'de2')";
-        String l = "INSERT INTO grade VALUES (5, 'kì 1', '2020-2021', 9, 9, 9, 9, 'de3')";
-        String n = "INSERT INTO grade VALUES (6, 'kì 2', '2020-2021', 8, 8, 7, 7.6, 'de3')";
+        String h = "INSERT INTO grade VALUES (1, 'kì 1', '2020-2021','de1', 8, 8, 8, 8 )";
+        String k = "INSERT INTO grade  VALUES (2, 'kì 2', '2020-2021','de1', 7, 7, 8, 7.3)";
+        String i = "INSERT INTO grade  VALUES (3, 'kì 1', '2020-2021','de2', 9, 7, 8, 8 )";
+        String m = "INSERT INTO grade  VALUES (4, 'kì 2', '2020-2021','de2', 6, 5, 10, 7 )";
+        String l = "INSERT INTO grade VALUES (5, 'kì 1', '2020-2021','de3', 9, 9, 9, 9 )";
+        String n = "INSERT INTO grade VALUES (6, 'kì 2', '2020-2021','de3', 8, 8, 7, 7.6 )";
         db.execSQL(h);
         db.execSQL(k);
         db.execSQL(i);
@@ -81,7 +81,7 @@ public class MyDatabase extends SQLiteOpenHelper {
         String a8 = "INSERT INTO notification(idFrom,idTo,topic,message,day) values('bachdang001','nghia01','Lịch học','T2 T3 T4','22/07/2021')";
         String a9 = "INSERT INTO notification(idFrom,idTo,topic,message,day) values('bachdang001','nghia01','Thu phí wc','100.000đ','22/07/2021')";
         String a10 = "INSERT INTO notification(idFrom,idTo,topic,message,day) values('bachdang001','binh01','Học phí','Học phí tháng 5: 100.000đ','22/07/2021')";
-        db.execSQL(a1);db.execSQL(a2);db.execSQL(a3);db.execSQL(a4);db.execSQL(a6);db.execSQL(a7);db.execSQL(a8);db.execSQL(a9);db.execSQL(a10);
+        db.execSQL(a1);db.execSQL(a2);db.execSQL(a3);db.execSQL(a4);db.execSQL(a5);db.execSQL(a6);db.execSQL(a7);db.execSQL(a8);db.execSQL(a9);db.execSQL(a10);
 
 
     }
