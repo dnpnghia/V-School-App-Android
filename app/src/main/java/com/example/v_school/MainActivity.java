@@ -52,17 +52,6 @@ public class MainActivity extends AppCompatActivity {
         myDatabase = new MyDatabase(this);
         pref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         Account currentAccount = myDatabase.getAccountByPhone(pref.getString("currentPhone", "").toString());
-        if (currentAccount != null) {
-            Intent i = new Intent(MainActivity.this, Activity_2.class);
-            i.putExtra("username", currentAccount.getUsername().toString());
-            i.putExtra("phone", currentAccount.getPhone().toString());
-            i.putExtra("role", currentAccount.getRole().toString());
-            i.putExtra("password", currentAccount.getPassword());
-            startActivity(i);
-            startActivity(i);
-            finish();
-        }
-
         setContentView(R.layout.activity_main);
         phone = (EditText) findViewById(R.id.edit_phone);
         password = (EditText) findViewById(R.id.edit_password);
@@ -86,7 +75,9 @@ public class MainActivity extends AppCompatActivity {
                 binding = Activity3Binding.inflate(getLayoutInflater());
                 setContentView(binding.getRoot());
                 setSupportActionBar(binding.appBarMain.toolbar);
-
+                editor = pref.edit();
+                editor.putString("currentPhone", loginAccount.getPhone());
+                editor.commit();
                 DrawerLayout drawer = binding.drawerLayout;
                 NavigationView navigationView = binding.navView;
                 // Passing each menu ID as a set of Ids because each
@@ -106,25 +97,10 @@ public class MainActivity extends AppCompatActivity {
                 NavigationUI.setupWithNavController(navigationView, navController);
 
 
-                if (loginAccount != null) {
-                    Toast.makeText(MainActivity.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(MainActivity.this, Activity_2.class);
-                    i.putExtra("username", loginAccount.getUsername().toString());
-                    i.putExtra("phone", loginAccount.getPhone().toString());
-                    i.putExtra("role", loginAccount.getRole().toString());
-                    i.putExtra("password", passwordCheck);
-                    startActivity(i);
-
-
-                    editor = pref.edit();
-                    editor.putString("currentPhone", loginAccount.getPhone());
-                    editor.commit();
-
-                } else {
-                    Toast.makeText(MainActivity.this, "Sai số điện thoại hoặc mật khẩu", Toast.LENGTH_SHORT).show();
-                }
             }
-
+            else {
+                Toast.makeText(MainActivity.this, "Sai số điện thoại hoặc mật khẩu", Toast.LENGTH_SHORT).show();
+            }
 
         } catch (Exception e) {
             System.out.println(e);
@@ -133,13 +109,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void logout() {
-//        SharedPreferences SM = getSharedPreferences("userrecord", 0);
-//        SharedPreferences.Editor edit = SM.edit();
-//        edit.putBoolean("userlogin", false);
-//        edit.commit();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-        // pref finish
         SharedPreferences.Editor editor = pref.edit();
         editor.clear();
         editor.commit();

@@ -1,7 +1,5 @@
 package com.example.v_school.fragment;
 
-import android.app.ActionBar;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,22 +11,21 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.example.v_school.Account;
-import com.example.v_school.Activity_2;
 import com.example.v_school.Activity_4;
 import com.example.v_school.Activity_5;
 import com.example.v_school.Activity_6;
 import com.example.v_school.Activity_7;
 import com.example.v_school.Activity_8;
 import com.example.v_school.MainActivity;
-import com.example.v_school.MyDatabase;
 import com.example.v_school.R;
-import com.example.v_school.databinding.Activity3Binding;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -42,10 +39,21 @@ public class home_Fragment extends Fragment{
     private View root;
     private MainActivity mainActivity;
     private Account account;
+    DatabaseReference myRef;
+    FirebaseDatabase rootNode;
+
+    @Override
+    public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        rootNode = FirebaseDatabase.getInstance();
+        myRef = rootNode.getReference("notification");
+
+    }
 
     @Override
     public View onCreateView( LayoutInflater inflater, ViewGroup container,  Bundle savedInstanceState) {
          root = inflater.inflate(R.layout.fragment_home, container, false);
+
         return root;
     }
 
@@ -106,8 +114,29 @@ public class home_Fragment extends Fragment{
                 Intent intent = new Intent(getActivity(), Activity_6.class);
                 intent.putExtra("id", account.getId());
                 startActivity(intent);
-                Toast.makeText(mainActivity, account.getPhone() + account.getId(), Toast.LENGTH_SHORT).show();
             }
+        });
+
+        // Read from the database
+        rootNode = FirebaseDatabase.getInstance();
+        myRef = rootNode.getReference("notification");
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+//                String value = dataSnapshot.getValue(String.class);
+                Toast.makeText(getActivity().getApplicationContext(), "Có thông báo mới !!!", Toast.LENGTH_SHORT).show();
+
+//                Log.d(TAG, "Value is: " + value);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+//                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+
         });
 
     }
@@ -124,4 +153,8 @@ public class home_Fragment extends Fragment{
         super.onDestroyView();
         root = null;
     }
+
+
+
+
 }

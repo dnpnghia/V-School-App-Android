@@ -20,7 +20,7 @@ public class Activity_4 extends AppCompatActivity {
         myDatabase = new MyDatabase(this);
         Student student = myDatabase.getStudentsByParent(accountId).get(0);
         userName.setText(student.getName().toString());
-        className.setText(student.getClasses().toString());
+        className.setText("Lop: "+student.getClasses().toString());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
     public void InitUI(){
