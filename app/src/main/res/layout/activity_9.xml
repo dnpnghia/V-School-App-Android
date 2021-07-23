@@ -43,7 +43,7 @@
         android:layout_marginBottom="10dp"
         android:background="@drawable/custom_input"
         android:hint="@string/hintChudeThongbao"
-
+android:textSize="55px"
         android:inputType="textAutoCorrect"
         android:padding="10dp"></EditText>
 
@@ -64,6 +64,7 @@
         android:autoSizeMaxTextSize="@dimen/cardview_default_radius"
         android:background="@drawable/custom_input"
         android:gravity="top"
+        android:textSize="60px"
         android:hint="@string/hintNoidungThongbao"
         android:inputType="text|textMultiLine"
         android:padding="10dp"></EditText>

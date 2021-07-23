@@ -22,8 +22,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Activity_9" android:parentActivityName=".Activity_8">
-
+        <activity android:name=".Activity_9" android:parentActivityName=".Activity_8"
+            android:windowSoftInputMode="adjustPan"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            >
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
