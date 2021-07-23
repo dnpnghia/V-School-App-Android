@@ -12,24 +12,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VSchool">
-        <activity android:name=".Activity_8">
+
+        <activity android:name=".Activity_5" android:parentActivityName=".Activity_3" />
+        <activity android:name=".Activity_4" android:parentActivityName=".Activity_3" />
+        <activity android:name=".Activity_Editprofile"></activity>
+        <activity android:name=".Activity_8" android:parentActivityName=".Activity_3">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity_9">
+
+        <activity android:name=".Activity_9" android:parentActivityName=".Activity_8">
+
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity_2" >
+
+        <activity android:name=".Activity_7" android:parentActivityName=".Activity_3"/>
+        <activity android:name=".Activity_6" android:parentActivityName=".Activity_3"/>
+        <activity android:name=".Activity_3"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".Activity_2">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity_7" />
-        <activity android:name=".Activity_6" />
-        <activity android:name=".Activity_3" />
         <activity android:name=".ChiTietThongBao" />
         <activity
             android:name=".MainActivity"

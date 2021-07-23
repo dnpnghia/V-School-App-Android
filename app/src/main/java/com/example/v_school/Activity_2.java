@@ -92,21 +92,13 @@ public class Activity_2 extends AppCompatActivity {
                 intent.putExtra("username", getIntent().getStringExtra("username"));
                 intent.putExtra("phone", getIntent().getStringExtra("phone"));
                 intent.putExtra("password", getIntent().getStringExtra("password"));
+                intent.putExtra("id", getIntent().getStringExtra("id"));
                 startActivity(intent);
 
             }
         });
 
-        // CODE NUT' HO~ TRO.
-        btnHotro = (Button) findViewById(R.id.btnHotro);
-        btnHotro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Activity_2.this, Activity_7.class);
-                startActivity(intent);
 
-            }
-        });
 
         // Read from the database
         rootNode = FirebaseDatabase.getInstance();

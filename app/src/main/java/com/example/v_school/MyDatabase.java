@@ -166,6 +166,23 @@ public class MyDatabase extends SQLiteOpenHelper {
         return account;
 
     }
+    //Account login
+    public Account getAccById(String id) {
+        String sql = "select * from " + ACCOUNT_TABLE + " where id = '" + id  + "'";
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery(sql, null);
+        if (cursor.moveToNext() == false) {
+            return null;
+        }
+        Account account = new Account();
+        account.setId(cursor.getString(cursor.getColumnIndex("id")));
+        account.setUsername(cursor.getString(cursor.getColumnIndex("username")));
+        account.setPhone(cursor.getString(cursor.getColumnIndex("phone")));
+        account.setAddress(cursor.getString(cursor.getColumnIndex("address")));
+        account.setRole(cursor.getString(cursor.getColumnIndex("role")));
+        return account;
+
+    }
 
     // get all noti
     public ArrayList<Notification> getAllNoti(Account loginAccount) {
