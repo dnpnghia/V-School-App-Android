@@ -23,13 +23,13 @@ public class Activity_grade extends AppCompatActivity {
         myDatabase = new MyDatabase(this);
         String studentId =  getIntent().getStringExtra("studentId");
         String studentName = getIntent().getStringExtra("studentName");
-        Toast.makeText(this, "studentID"+studentId, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "studentID"+studentId, Toast.LENGTH_SHORT).show();
         txtChildName.setText(studentName);
         ArrayList<Grade> listGrade = new ArrayList<>();
         listGrade = myDatabase.getGradeByStudent(studentId);
         try {
             if(!listGrade.isEmpty()){
-                Toast.makeText(Activity_grade.this,listGrade.size()+"",Toast.LENGTH_LONG).show();
+//                Toast.makeText(Activity_grade.this,listGrade.size()+"",Toast.LENGTH_LONG).show();
                 diemToan.setText(listGrade.get(0).getToan()+"");
                 diemVan.setText(listGrade.get(0).getVan()+"");
                 diemAnh.setText(listGrade.get(0).getAnh()+"");

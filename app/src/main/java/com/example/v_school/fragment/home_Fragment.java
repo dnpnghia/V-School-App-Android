@@ -74,14 +74,8 @@ public class home_Fragment extends Fragment{
                     }
                 else if (account.getRole().equals("SCHOOL")){
                     // add activity of quan ly truong hoc
-                    btnQuanly.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Intent intent = new Intent(getActivity(), Activity_8.class);
-                            startActivity(intent);
-
-                        }
-                    });
+                    Intent intent = new Intent(getActivity(), Activity_8.class);
+                    startActivity(intent);
                 }
                 else
                     Toast.makeText(getActivity(), "get action fail", Toast.LENGTH_SHORT).show();

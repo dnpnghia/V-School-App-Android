@@ -35,7 +35,6 @@ public class Activity_4 extends AppCompatActivity {
                 Intent intent = new Intent(Activity_4.this,Activity_grade.class);
                 intent.putExtra("studentName", student.getName());
                 intent.putExtra("studentId", student.getId());
-                Toast.makeText(Activity_4.this, student.getId(), Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }
         });
