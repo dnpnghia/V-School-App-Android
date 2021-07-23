@@ -4,7 +4,6 @@ package com.example.v_school;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 
-import java.util.ArrayList;
 
 @IgnoreExtraProperties
 public class Notification {
@@ -15,6 +14,9 @@ public class Notification {
     public String message;
     public String day;
     public int isRead;
+
+    public Notification() {
+    }
 
     public Notification(int id, String idFrom, String idTo, String topic, String message, String day, int isRead) {
         this.id = id;
@@ -52,8 +54,6 @@ public class Notification {
         this.day = day;
     }
 
-    public Notification() {
-    }
 
     public int getId() {
         return id;
