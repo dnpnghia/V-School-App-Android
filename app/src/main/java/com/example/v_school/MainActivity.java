@@ -95,6 +95,11 @@ public class MainActivity extends AppCompatActivity {
                     logout();
                     return true;
                 });
+                View heaaderView = navigationView.getHeaderView(0);
+                TextView navUserName = (TextView) heaaderView.findViewById(R.id.txtNavUsername);
+                TextView navUserRole = (TextView) heaaderView.findViewById(R.id.txtUserRole);
+                navUserName.setText(account.getUsername());
+                navUserRole.setText(account.getRole());
 
                 mAppBarConfiguration = new AppBarConfiguration.Builder(
                         R.id.nav_home, R.id.nav_dieukhoan, R.id.nav_thongtin, R.id.nav_dangxuat)
