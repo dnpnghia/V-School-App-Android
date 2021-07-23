@@ -2,17 +2,19 @@ package com.example.v_school;
 
 
 
+import com.google.firebase.database.IgnoreExtraProperties;
+
 import java.util.ArrayList;
 
-
+@IgnoreExtraProperties
 public class Notification {
-    private int id;
-    private String idFrom;
-    private String idTo;
-    private String topic;
-    private String message;
-    private String day;
-    private int isRead;
+    public int id;
+    public String idFrom;
+    public String idTo;
+    public String topic;
+    public String message;
+    public String day;
+    public int isRead;
 
     public Notification(int id, String idFrom, String idTo, String topic, String message, String day, int isRead) {
         this.id = id;
@@ -107,5 +109,18 @@ public class Notification {
 
     public void setIsRead(int isRead) {
         this.isRead = isRead;
+    }
+
+    @Override
+    public String toString() {
+        return "Notification{" +
+                "id=" + id +
+                ", idFrom='" + idFrom + '\'' +
+                ", idTo='" + idTo + '\'' +
+                ", topic='" + topic + '\'' +
+                ", message='" + message + '\'' +
+                ", day='" + day + '\'' +
+                ", isRead=" + isRead +
+                '}';
     }
 }
