@@ -21,8 +21,7 @@ public class ChiTietThongBao extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chitietthongbao);
-        if(getIntent() !=null)
-        {
+        if (getIntent() != null) {
             tenthongbao = getIntent().getStringExtra("tenthongbao");
             noidung = getIntent().getStringExtra("noidung");
             ngay = getIntent().getStringExtra("ngay");
@@ -32,9 +31,9 @@ public class ChiTietThongBao extends AppCompatActivity {
         txtviewNoidung = findViewById(R.id.txtNoidungchitiet);
         txtviewNgay = findViewById(R.id.txtNgaychitiet);
 
-        txtviewTen.setText(tenthongbao);
-        txtviewNgay.setText(ngay);
-        txtviewNoidung.setText(noidung);
+        txtviewTen.setText("Chủ đề: " + tenthongbao);
+        txtviewNgay.setText("Ngày: " + ngay);
+        txtviewNoidung.setText("Nội dung: " + noidung);
 
 
         //CODE NUT' BACK

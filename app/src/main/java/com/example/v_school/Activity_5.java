@@ -11,6 +11,7 @@ public class Activity_5 extends AppCompatActivity {
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_5);
+        setTitle("Hỗ trợ");
     }
 
 }
