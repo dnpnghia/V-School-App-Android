@@ -1,6 +1,8 @@
 package com.example.v_school;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,6 +34,8 @@ public class Activity_9 extends AppCompatActivity {
     DatabaseReference reference;
     MyDatabase myDatabase;
     SharedPreferences pref;
+    NetworkChangeReceiver netReceiver = new NetworkChangeReceiver();
+    IntentFilter intentFilter = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
     Account currentAccount = new Account();
     Activity_7 activity_7 = new Activity_7();
 
@@ -42,7 +46,7 @@ public class Activity_9 extends AppCompatActivity {
         setContentView(R.layout.activity_9);
         myDatabase = new MyDatabase(this);
         pref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
-
+        registerReceiver(netReceiver, intentFilter);
 //        myDatabase = new MyDatabase(this);
         guithongbao = (Button) findViewById(R.id.btn_guithongbao);
         chude = (EditText) findViewById(R.id.txt_topicNoti);
@@ -68,45 +72,55 @@ public class Activity_9 extends AppCompatActivity {
         guithongbao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    String topic = chude.getText().toString();
-                    String message = noidung.getText().toString();
-                    if (topic.isEmpty() || message.isEmpty()) {
-                        Toast.makeText(Activity_9.this, "Vui lòng nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
+                if (!netReceiver.isOnline(Activity_9.this)) {
+                    Toast.makeText(Activity_9.this, "Vui lòng kiểm tra kết nối mạng!", Toast.LENGTH_LONG).show();
+                } else {
+                    try {
+                        String topic = chude.getText().toString();
+                        String message = noidung.getText().toString();
+                        if (topic.isEmpty() || message.isEmpty()) {
+                            Toast.makeText(Activity_9.this, "Vui lòng nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
 
-                    } else {
-                        // get current day
-                        Date currentTime = Calendar.getInstance().getTime();
-                        DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy hh:mm:ss");
-                        String day = dateFormat.format(currentTime);
-                        int numberOfParentRecieve = checkedParents.size();
-                        // them tb vao db
-                        for (Account pr : checkedParents) {
-                            myDatabase.insertNoti(currentAccount.getId(), pr.getId(), topic, message, day);
+                        } else {
+                            // get current day
+                            Date currentTime = Calendar.getInstance().getTime();
+                            DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy hh:mm:ss");
+                            String day = dateFormat.format(currentTime);
+                            int numberOfParentRecieve = checkedParents.size();
+                            // them tb vao db
+                            for (Account pr : checkedParents) {
+                                myDatabase.insertNoti(currentAccount.getId(), pr.getId(), topic, message, day);
 
-                        }
-                        // danh sach thong bao vua them vao db
-                        ArrayList<Notification> listNotiNewest = new ArrayList<>();
-                        listNotiNewest = myDatabase.getNotiNewest(numberOfParentRecieve);
-                        // them tb vao firebase
-                        for (Notification nt : listNotiNewest) {
-                            rootNode = FirebaseDatabase.getInstance();
-                            reference = rootNode.getReference("notification");
-                            Notification notification = new Notification(nt.getId(), nt.getIdFrom(), nt.getIdTo(), nt.getTopic(), nt.getMessage(), nt.getDay(), nt.getIsRead());
+                            }
+                            // danh sach thong bao vua them vao db
+                            ArrayList<Notification> listNotiNewest = new ArrayList<>();
+                            listNotiNewest = myDatabase.getNotiNewest(numberOfParentRecieve);
+                            // them tb vao firebase
+                            for (Notification nt : listNotiNewest) {
+                                rootNode = FirebaseDatabase.getInstance();
+                                reference = rootNode.getReference("notification");
+                                Notification notification = new Notification(nt.getId(), nt.getIdFrom(), nt.getIdTo(), nt.getTopic(), nt.getMessage(), nt.getDay(), nt.getIsRead());
 //                            reference.child(String.valueOf(nt.getId())).setValue(nt);
-                            activity_7.pushDataFB(notification);
+                                activity_7.pushDataFB(notification);
 
+                            }
+                            Toast.makeText(Activity_9.this, "Thêm thông báo thành công!", Toast.LENGTH_SHORT).show();
                         }
-                        Toast.makeText(Activity_9.this, "Thêm thông báo thành công!", Toast.LENGTH_SHORT).show();
+
+
+                    } catch (Exception e) {
+                        Toast.makeText(Activity_9.this, "Thêm thông báo thất bại!", Toast.LENGTH_SHORT).show();
                     }
-
-
-                } catch (Exception e) {
-                    Toast.makeText(Activity_9.this, "Thêm thông báo thất bại!", Toast.LENGTH_SHORT).show();
                 }
 
 
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(netReceiver);
     }
 }

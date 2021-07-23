@@ -13,6 +13,7 @@ import androidx.navigation.ui.NavigationUI;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 
 import android.view.Menu;
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     EditText phone;
     EditText password;
     MyDatabase myDatabase;
-
+    TextView quenMk;
 
     SharedPreferences pref;
     SharedPreferences.Editor editor;
@@ -55,7 +56,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         phone = (EditText) findViewById(R.id.edit_phone);
         password = (EditText) findViewById(R.id.edit_password);
-
+        quenMk =(TextView) findViewById(R.id.txt_quenmk);
+        quenMk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("https://v-school.vn/reset-password"));
+                startActivity(intent);
+            }
+        });
     }
 
     public void login(View view) {
