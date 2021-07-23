@@ -102,8 +102,10 @@ public class Activity_7 extends AppCompatActivity {
                 Notification notification = new Notification();
                 notification = snapshot.getValue(Notification.class);
                 boolean flag = true;
-                for (Notification noti: noTiList) {
-                    if (noti.getIdTo().equals(notification.getIdTo()) && noti.getDay().equals(noti.getDay())) {
+                List<Notification> zzz = new ArrayList<>();
+                zzz = myDatabase.getAllNotiAllll();
+                for (Notification noti: zzz) {
+                    if (noti.getIdTo().equals(notification.getIdTo()) && noti.getDay().equals(notification.getDay())) {
                         flag = false;
                         break;
                     }

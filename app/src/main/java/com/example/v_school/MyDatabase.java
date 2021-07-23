@@ -220,7 +220,25 @@ public class MyDatabase extends SQLiteOpenHelper {
         cursor.close();
         return listNoti;
     }
-
+    // get all notiiiii
+    public ArrayList<Notification> getAllNotiAllll() {
+        ArrayList<Notification> listNoti = new ArrayList<>();
+        String sql = "select * from " + NOTIFICATION_TABLE ;
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery(sql, null);
+        while (cursor.moveToNext()) {
+            int id = cursor.getColumnIndex("id");
+            int idFrom = cursor.getColumnIndex("idFrom");
+            int idTo = cursor.getColumnIndex("idTo");
+            int topic = cursor.getColumnIndex("topic");
+            int message = cursor.getColumnIndex("message");
+            int day = cursor.getColumnIndex("day");
+            int isRead = cursor.getColumnIndex("isRead");
+            listNoti.add(new Notification(cursor.getInt(id), cursor.getString(idFrom), cursor.getString(idTo), cursor.getString(topic), cursor.getString(message), cursor.getString(day), cursor.getInt(isRead)));
+        }
+        cursor.close();
+        return listNoti;
+    }
     // get one noti
     public Notification getOneNoti(int id) {
         String sql = "select * from " + NOTIFICATION_TABLE + " where id = " + id;
