@@ -23,6 +23,7 @@
 
 
         <activity android:name=".Activity_Editprofile"></activity>
+        <activity android:name=".Activity_Doimatkhau"></activity>
         <activity android:name=".Activity_8" android:parentActivityName=".Activity_3">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />

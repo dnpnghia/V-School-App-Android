@@ -198,6 +198,7 @@ public class MyDatabase extends SQLiteOpenHelper {
         account.setUsername(cursor.getString(cursor.getColumnIndex("username")));
         account.setPhone(cursor.getString(cursor.getColumnIndex("phone")));
         account.setAddress(cursor.getString(cursor.getColumnIndex("address")));
+        account.setPassword(cursor.getString(cursor.getColumnIndex("password")));
         account.setRole(cursor.getString(cursor.getColumnIndex("role")));
         return account;
 

@@ -56,6 +56,20 @@ public class Activity_6 extends AppCompatActivity {
             }
         });
 
+        // CODE NUT' MK
+        btnEdiprofile = (Button) findViewById(R.id.btnChange);
+        btnEdiprofile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Activity_6.this, Activity_Doimatkhau.class);
+                intent.putExtra("mk", loginAccount.getPassword());
+                intent.putExtra("id", loginAccount.getId());
+
+                startActivity(intent);
+
+            }
+        });
+
         //CODE NUT' BACK
         btnBack = (Button) findViewById(R.id.btnBack);
         btnBack.setOnClickListener(new View.OnClickListener() {

@@ -42,6 +42,7 @@ public class Activity_7 extends AppCompatActivity {
     public static DatabaseReference myRef = rootNode.getReference().child("notification");
     private NotificationAdapter notificationAdapter = new NotificationAdapter(noTiList);
     private Account login = new Account();
+    private Notification n;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,24 +54,12 @@ public class Activity_7 extends AppCompatActivity {
         rvList = findViewById(R.id.recyclerview);
 
 
-//        for (int i = 1; i < 11; i++) {
-//            Notification notification = new Notification();
-//            notification.setId(i);
-//            notification.setTopic("Thong bao nghi hoc " + i);
-//            notification.setDay("10/10/2021");
-//            notification.setIdFrom("nghiadnp");
-//            notification.setIdTo("khanhln");
-//            if (i % 2 == 0) notification.setIsRead(1);
-//            notification.setMessage("qwdqdbqwdiqwudhqwdiqduiqwhd");
-//            noTiList.add(notification);
-//        }
 
         String id = getIntent().getStringExtra("id");
         noTiList.clear();
         login = myDatabase.getAccById(id);
         newList = myDatabase.getAllNoti(login);
-        Toast.makeText(getApplicationContext(), login.getId(),
-                Toast.LENGTH_SHORT).show();
+
         for (int i = 0; i < newList.size(); i++) {
             noTiList.add(newList.get(i));
         }
@@ -85,17 +74,25 @@ public class Activity_7 extends AppCompatActivity {
         rvList.setLayoutManager(linearLayoutManager);
         rvList.setAdapter(notificationAdapter);
 
-//        Notification n;
-//        Notification z;
-//        for (int l = 0; l < noTiList.size()-1; l++)
-//        for (int j =l+1; j < noTiList.size(); j++){
-//            if (noTiList.get(l).getIsRead() > noTiList.get(j).getIsRead()) {
-//                n = noTiList.get(l);
-//                z = noTiList.get(j);
-//                noTiList.get(l) = z;
-//            }
-//        }
 
+        List<Notification> newListRead = new ArrayList<>();
+        for (int l = 0; l < noTiList.size(); l++){
+            if (noTiList.get(l).getIsRead() == 1) {
+            newListRead.add(noTiList.get(l));
+            noTiList.remove(l);
+            }
+        }
+        for (int l = 0; l < newListRead.size(); l++){
+            noTiList.add(newListRead.get(l));
+        }
+        newListRead.clear();
+        while (noTiList.get(0).getIsRead() == 1) {
+            newListRead.add(noTiList.get(0));
+            noTiList.remove(0);
+        }
+        for (int l = 0; l < newListRead.size(); l++){
+            noTiList.add(newListRead.get(l));
+        }
         myRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NotNull DataSnapshot snapshot, @Nullable String s) {
@@ -117,7 +114,27 @@ public class Activity_7 extends AppCompatActivity {
                     if (notification.getIdTo().equals(login.getId()) ) {
                         Toast.makeText(getApplicationContext(), "Có thông báo mới !!!",
                                 Toast.LENGTH_SHORT).show();
-                        noTiList.add(notification);
+
+
+                        List<Notification> newListReadC = new ArrayList<>();
+                        for (int l = 0; l < noTiList.size(); l++){
+                            if (noTiList.get(l).getIsRead() == 1) {
+                                newListReadC.add(noTiList.get(l));
+                                noTiList.remove(l);
+                            }
+                        }
+                        while (noTiList.get(0).getIsRead() == 1) {
+                            newListReadC.add(noTiList.get(0));
+                            noTiList.remove(0);
+                        }
+                        noTiList.add(0,notification);
+
+
+                        for (int l = 0; l < newListReadC.size(); l++){
+                            noTiList.add(newListReadC.get(l));
+                        }
+
+
                         notificationAdapter.notifyDataSetChanged();
 
                     }
@@ -185,15 +202,16 @@ public class Activity_7 extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-//
-//            ArrayList<Notification> listNew = new ArrayList<>();
-//            for (int l = 0; l < noTiList.size(); l++) {
-//                if (noTiList.get(l).getIsRead() == 0) {
-//                    listNew.add(noTiList.get(l));
-//                }
-//            }
-//            NotificationAdapter notificationAdapter = new NotificationAdapter(listNew);
-//            rvList.setAdapter(notificationAdapter);
+        List<Notification> newListRead = new ArrayList<>();
+        for (int l = 0; l < noTiList.size(); l++){
+            if (noTiList.get(l).getIsRead() ==1) {
+                newListRead.add(noTiList.get(l));
+                noTiList.remove(l);
+            }
+        }
+        for (int l = 0; l < newListRead.size(); l++){
+            noTiList.add(newListRead.get(l));
+        }
 
 
         notificationAdapter.notifyDataSetChanged();
