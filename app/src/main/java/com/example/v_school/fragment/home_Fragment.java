@@ -118,28 +118,22 @@ public class home_Fragment extends Fragment{
             }
         });
 
-//        // Read from the database
-//        rootNode = FirebaseDatabase.getInstance();
-//        myRef = rootNode.getReference("notification");
-//        myRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                // This method is called once with the initial value and again
-//                // whenever data at this location is updated.
-////                String value = dataSnapshot.getValue(String.class);
-//                Toast.makeText(getActivity().getApplicationContext(), "Có thông báo mới !!!", Toast.LENGTH_SHORT).show();
-//
-////                Log.d(TAG, "Value is: " + value);
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError error) {
-//                // Failed to read value
-////                Log.w(TAG, "Failed to read value.", error.toException());
-//            }
-//
-//        });
-//
+        // Read from the database
+        rootNode = FirebaseDatabase.getInstance();
+        myRef = rootNode.getReference("notification");
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Toast.makeText(getActivity().getApplicationContext(), "Có thông báo mới !!!", Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+
+            }
+
+        });
     }
 
     public void InitUI(){
