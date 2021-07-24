@@ -72,7 +72,16 @@ public class home_Fragment extends Fragment{
                     startActivity(in);
                 }
             });
+            // button thong bao
+            btnThongbao.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent in = new Intent(getActivity(), Activity_7.class);
+                    in.putExtra("id", account.getId());
+                    startActivity(in);
 
+                }
+            });
 
 
         }
@@ -93,21 +102,6 @@ public class home_Fragment extends Fragment{
                 Toast.makeText(getActivity(), "get action fail", Toast.LENGTH_SHORT).show();
             }
 
-        // button thong bao
-        btnThongbao.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (userRole.equals("PARENT")){
-                    Intent in = new Intent(getActivity(), Activity_7.class);
-                    in.putExtra("id", account.getId());
-                    startActivity(in);
-                }else {
-                    Toast.makeText(getActivity().getApplicationContext(),"Chức năng đang phát triển",Toast.LENGTH_SHORT).show();
-                }
-
-
-            }
-        });
 
         // button ho tro
         btnHotro.setOnClickListener(new View.OnClickListener() {
