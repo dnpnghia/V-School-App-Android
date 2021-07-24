@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
     private Activity3Binding binding;
     private String username = "";
     private Account account;
+    String accountId;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +82,8 @@ public class MainActivity extends AppCompatActivity {
                 ;
                 // if login success
                 // procces create next view for drawerview
+
+
                 username = loginAccount.getUsername().toString().trim();
                 account = loginAccount;
                 binding = Activity3Binding.inflate(getLayoutInflater());

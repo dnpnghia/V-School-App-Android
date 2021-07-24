@@ -24,6 +24,7 @@ public class Activity_grade extends AppCompatActivity {
         myDatabase = new MyDatabase(this);
         String studentId = getIntent().getStringExtra("studentId");
         String studentName = getIntent().getStringExtra("studentName");
+
 //        Toast.makeText(this, "studentID"+studentId, Toast.LENGTH_SHORT).show();
         txtChildName.setText("Học sinh: "+studentName);
         ArrayList<Grade> listGrade = new ArrayList<>();
