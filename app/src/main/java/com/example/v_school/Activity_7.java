@@ -116,26 +116,26 @@ public class Activity_7 extends AppCompatActivity {
                                 Toast.LENGTH_SHORT).show();
 
 
-                        List<Notification> newListReadC = new ArrayList<>();
-                        for (int l = 0; l < noTiList.size(); l++){
-                            if (noTiList.get(l).getIsRead() == 1) {
-                                newListReadC.add(noTiList.get(l));
-                                noTiList.remove(l);
-                            }
-                        }
-                        while (noTiList.get(0).getIsRead() == 1) {
-                            newListReadC.add(noTiList.get(0));
-                            noTiList.remove(0);
-                        }
+//                        List<Notification> newListReadC = new ArrayList<>();
+//                        for (int l = 0; l < noTiList.size(); l++){
+//                            if (noTiList.get(l).getIsRead() == 1) {
+//                                newListReadC.add(noTiList.get(l));
+//                                noTiList.remove(l);
+//                            }
+//                        }
+//                        while (noTiList.get(0).getIsRead() == 1) {
+//                            newListReadC.add(noTiList.get(0));
+//                            noTiList.remove(0);
+//                        }
+//
+//
+//                        for (int l = 0; l < newListReadC.size(); l++){
+//                            noTiList.add(newListReadC.get(l));
+//                        }
                         noTiList.add(0,notification);
 
-
-                        for (int l = 0; l < newListReadC.size(); l++){
-                            noTiList.add(newListReadC.get(l));
-                        }
-
-
                         notificationAdapter.notifyDataSetChanged();
+//                        notificationAdapter.notifyDataSetChanged();
 
                     }
                 }
