@@ -60,7 +60,7 @@ public class home_Fragment extends Fragment{
         InitUI();
         mainActivity = (MainActivity)getActivity();
         account = mainActivity.getAccount();
-        textViewUsername.setText("Xin chao " + account.getUsername());
+        textViewUsername.setText("Xin chào " + account.getUsername());
         // button quan ly
         String userRole = account.getRole();
         if(userRole.equals("PARENT")){
@@ -97,9 +97,14 @@ public class home_Fragment extends Fragment{
         btnThongbao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in = new Intent(getActivity(), Activity_7.class);
-                in.putExtra("id", account.getId());
-                startActivity(in);
+                if (userRole.equals("PARENT")){
+                    Intent in = new Intent(getActivity(), Activity_7.class);
+                    in.putExtra("id", account.getId());
+                    startActivity(in);
+                }else {
+                    Toast.makeText(getActivity().getApplicationContext(),"Chức năng đang phát triển",Toast.LENGTH_SHORT).show();
+                }
+
 
             }
         });
